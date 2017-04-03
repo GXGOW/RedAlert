@@ -24,7 +24,7 @@
 
 <body>
 <div id="wrap">
-    <div id="panel" style="height: 100%;">
+    <div id="panel">
         <?php getHeader(); ?>
         <div id="main">
             <picture>
