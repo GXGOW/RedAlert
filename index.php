@@ -52,6 +52,7 @@
                     namelijk twee consumpties voor de prijs van een!</p>
                 <p>Klik op een pagina in het menu links voor tickets en info. Hou ook zeker onze <a href="https://www.facebook.com/RedAlertHamme/?fref=ts">Facebookpagina</a> in de
                     gaten en <strong>maak kans op gratis tickets!</strong></p>
+                <p>Het was weer een dik geslaagde editie dit jaar! Bedankt aan iedereen die gekomen is. De foto's zijn <a href=""</p>
             </div>
         </div>
         <?php getFooter() ?>

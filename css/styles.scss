@@ -263,6 +263,9 @@ p {
   padding-bottom: 1em;
   padding-right: 2em;
   color: gray;
+  a {
+    font-size: 1.1em;
+  }
 }
 
 #mapWrap {
@@ -287,6 +290,8 @@ footer {
   p,a {
     text-align: center;
     color: white;
+  }
+  p {
     font-size: .8em;
   }
 }

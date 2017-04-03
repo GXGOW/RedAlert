@@ -2,17 +2,14 @@ var mainView = {
     storage: null,
     scrwth: window.innerWidth,
     location: location.pathname.split('/').slice(-1)[0],
-    date: new Date('2017-03-18T21:00:00'),
     init: function () {
         this.storage = window.sessionStorage;
         this.setTitle();
         this.slideout();
         this.expandInfo();
-        if (Date.now() < this.date) {
-            if (this.location == "" || this.location == "index.php") {
-                this.countdownInit();
-                setInterval(this.countdownInit, 1000);
-            }
+        if (this.location == "" || this.location == "index.php") {
+            this.countdownInit(new Date('2017-03-18T21:00:00'));
+            setInterval(this.countdownInit, 1000);
         }
         if (!this.checkStorage()) {
             this.setStorage();
@@ -56,7 +53,7 @@ var mainView = {
             'padding': pad,
             'tolerance': 70
         });
-        if (window.innerWidth > 992){
+        if (window.innerWidth > 992) {
             slideout.disableTouch();
         }
         // Toggle button
@@ -106,16 +103,23 @@ var mainView = {
             });
         }
     },
-    countdownInit: function () {
-        var t = mainView.date - new Date();
-        var sec = Math.floor((t / 1000) % 60);
-        var min = Math.floor((t / 1000 / 60) % 60);
-        var hrs = Math.floor((t / (1000 * 60 * 60)) % 24);
-        var days = Math.floor(t / (1000 * 60 * 60 * 24));
-        $("#days").text(days);
-        $("#hrs").text(hrs);
-        $("#min").text(min);
-        $("#sec").text(sec);
+    setMapDimensions: function() {
+        if (this.scrwth < 992){
+            $("#map").width(this.scrwth - 40);
+        }
+    },
+    countdownInit: function (date) {
+        var t = date - new Date();
+        if (t > 0) {
+            var sec = Math.floor((t / 1000) % 60);
+            var min = Math.floor((t / 1000 / 60) % 60);
+            var hrs = Math.floor((t / (1000 * 60 * 60)) % 24);
+            var days = Math.floor(t / (1000 * 60 * 60 * 24));
+            $("#days").text(days);
+            $("#hrs").text(hrs);
+            $("#min").text(min);
+            $("#sec").text(sec);
+        } else $("#countdown").hide();
     }
 };
 

@@ -2,7 +2,7 @@
 date_default_timezone_set("Europe/Brussels");
 $prefix1;
 $prefix2;
-if ((basename($_SERVER["PHP_SELF"])) === "index.php") {
+if ((basename($_SERVER["PHP_SELF"])) === "index.php" || (basename($_SERVER["PHP_SELF"])) === "thanks.php") {
     $prefix1 = "";
     $prefix2 = "html/";
 } else {

@@ -212,6 +212,8 @@ p {
   padding-bottom: 1em;
   padding-right: 2em;
   color: gray; }
+  p a {
+    font-size: 1.1em; }
 
 #mapWrap {
   text-align: center;
@@ -232,7 +234,8 @@ footer {
   background-color: black; }
   footer p, footer a {
     text-align: center;
-    color: white;
+    color: white; }
+  footer p {
     font-size: .8em; }
 
 .active {
@@ -411,4 +414,4 @@ strong {
   #mapWrap #map {
     width: 700px; } }
 
-/*# sourceMappingURL=styles.css.mapap */
+/*# sourceMappingURL=styles.css.map */

@@ -7,6 +7,7 @@ var Latlng = {
 };
 
 function initMap() {
+    mainView.setMapDimensions();
     map = new google.maps.Map(mapDiv, {
         center: Latlng,
         zoom: 16
