@@ -33,7 +33,7 @@ function getHeader()
 function getFooter()
 {
     echo '<footer><p>Red Alert, een initiatief van <a href="http://kljhamme.be/" target="_blank">KLJ Hamme-Center</a></p>
-        <p>&#xf1f9; 2016-2017 <a href="mailto:nicolas.loots@outlook.be">Nicolas Loots</a></p>';
+        <p>&#xf1f9; 2016-2017 <a href="http://nico.levls.be" target="_blank">Nicolas Loots</a></p>';
 }
 
 function getAnim()
