@@ -39,11 +39,12 @@ var mainView = {
         });
     },
     slideout: function () {
+        //TODO menu misschien wat breder maken op desktop
         var pad;
         if (window.innerWidth <= 992) {
             pad = 250;
         } else {
-            pad = 200;
+            pad = 202;
         }
         var slideout = new Slideout({
             'panel': document.getElementById('panel'),
@@ -90,9 +91,9 @@ var mainView = {
     },
     highlightCurrentPage: function () {
         if (this.location === "") {
-            $("#menu a[href]").first().parent("li").addClass("active")
+            $("#menu").find("a[href]").first().parent("li").addClass("active")
         } else {
-            $("#menu a[href]").each(function () {
+            $("#menu").find("a[href]").each(function () {
                 if (this.href === window.location.href) {
                     $(this).parent("li").addClass("active");
                 }

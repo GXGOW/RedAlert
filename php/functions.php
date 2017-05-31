@@ -17,8 +17,8 @@ function getHead()
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="theme-color" content="#5c0000">
     <link rel="icon" sizes="244x244" href="images/icon.png ">
-    <link href="'.$prefix1.'node_modules/reset-css/reset.css" rel="stylesheet">
-    <link href="'.$prefix1.'dist/styles.css" rel="stylesheet">
+    <link href="' . $prefix1 . 'node_modules/reset-css/reset.css" rel="stylesheet">
+    <link href="' . $prefix1 . 'dist/styles.css" rel="stylesheet">
     <script>
         (function(i,s,o,g,r,a,m){i[\'GoogleAnalyticsObject\']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -33,15 +33,15 @@ function getHead()
 function getScripts()
 {
     global $prefix1;
-    $scripts = array('node_modules/slideout/dist/slideout.min.js', 'node_modules/jquery/dist/jquery.min.js', 'dist/functions.js');
-    foreach($scripts as $script)
-    {
-        echo '<script src="'.substr_replace($script, $prefix1, 0, 0).'"></script>';
+    $scripts = array('node_modules/slideout/dist/slideout.min.js', 'node_modules/jquery/dist/jquery.min.js', 'dist/functions.min.js');
+    foreach ($scripts as $script) {
+        echo '<script src="' . substr_replace($script, $prefix1, 0, 0) . '"></script>';
     }
 }
 
 function getMenu()
 {
+    //TODO Facebook naar footer verplaatsen in plaats van als apart menu-item te houden
     global $prefix1, $prefix2;
     echo '<nav id="menu">
     <img id="logo" src="' . $prefix1 . 'images/logo.png" alt="Red Alert logo">
@@ -78,4 +78,5 @@ function slideshow()
         echo '<img src="' . $file . '" alt="' . substr($file, strrpos($file, '/') + 1) . '">';
     }
 }
+
 ?>

@@ -36,7 +36,7 @@
     </div>
     <?php getAnim() ?>
     <?php getScripts(); ?>
-    <script src="../dist/tickets.js "></script>
+    <script src="../dist/tickets.min.js "></script>
 </body>
 
 </html>

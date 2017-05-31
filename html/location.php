@@ -29,7 +29,7 @@
     <?php getAnim() ?>
 </div>
 <?php getScripts()?>
-<script src="../dist/map.js"></script>
+<script src="../dist/map.min.js"></script>
 </body>
 
 </html>
