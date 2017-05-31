@@ -132,6 +132,8 @@ li,
 p,
 a {
   font-size: 1.1em;
+  line-height: 1.3em;
+
 }
 
 h1 {
@@ -407,7 +409,7 @@ strong {
 
 @media screen and (min-width: 992px) {
   #menu {
-    width: 200px;
+    width: 202px;
     #logo {
       width:200px;
     }

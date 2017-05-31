@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url(../node_modules/font-awesome/css/font-awesome.css);
 @font-face {
   font-family: Digital-7;
   src: url(../fonts/digital-7/digital-7.ttf); }
@@ -90,7 +91,7 @@ a,
 h1,
 sup,
 h2 {
-  font-family: FontAwesome, "Open Sans", "Comic Sans MS", sans-serif; }
+  font-family: FontAwesome, FontAwesome, "Open Sans", sans-serif; }
 
 h2 {
   text-align: center;
@@ -103,7 +104,8 @@ h2 {
 li,
 p,
 a {
-  font-size: 1.1em; }
+  font-size: 1.1em;
+  line-height: 1.3em; }
 
 h1 {
   color: #fffeb4;
@@ -325,7 +327,7 @@ strong {
       height: 500px; } }
 @media screen and (min-width: 992px) {
   #menu {
-    width: 200px; }
+    width: 202px; }
     #menu #logo {
       width: 200px; }
 

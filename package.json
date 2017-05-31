@@ -1,0 +1,26 @@
+{
+  "name": "RedAlert",
+  "version": "1.0.0",
+  "description": "Website voor de alombekende fuif van KLJ Hamme-Center, Red Alert. Ondertussen al enkele jaren oud",
+  "main": "index.js",
+  "repository": "https://github.com/GXGOW/RedAlert.git",
+  "author": "Nicolas Loots <nicolas.loots@outlook.be>",
+  "license": "MIT",
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "lodash": "^4.17.4",
+    "path": "^0.12.7",
+    "reset-css": "^2.2.0",
+    "slideout": "^1.0.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.0.4",
+    "gulp-minify": "^1.0.0"
+  },
+  "scripts": {
+    "gulp": "gulp",
+    "gulp-minify": "gulp-minify"
+  }
+}

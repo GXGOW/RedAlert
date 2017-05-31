@@ -1,13 +1,12 @@
 var mainView = {
     storage: null,
-    scrwth: window.innerWidth,
     location: location.pathname.split('/').slice(-1)[0],
     init: function () {
         this.storage = window.sessionStorage;
         this.setTitle();
         this.slideout();
         this.expandInfo();
-        if (this.location == "" || this.location == "index.php") {
+        if (this.location === "" || this.location === "index.php") {
             this.countdownInit(new Date('2017-03-18T21:00:00'));
             setInterval(this.countdownInit, 1000);
         }
@@ -27,8 +26,7 @@ var mainView = {
 
     windowResize: function () {
         $(window).resize(function () {
-            mainView.scrwth = window.innerWidth;
-            if (mainView.scrwth > 992) {
+            if (window.innerWidth > 992) {
                 $("#menu").show();
                 this.slideout.disableTouch();
             }
@@ -42,7 +40,7 @@ var mainView = {
     },
     slideout: function () {
         var pad;
-        if (this.scrwth <= 992) {
+        if (window.innerWidth <= 992) {
             pad = 250;
         } else {
             pad = 200;
@@ -65,23 +63,21 @@ var mainView = {
         mainView.storage.setItem("anim", "true");
     },
     checkStorage: function () {
-        if (mainView.storage.length <= 0)
-            return false;
-        else return true;
+        return mainView.storage.length > 0;
     },
     animateLogo: function () {
         $("#anim").toggle().delay(1000).animate({top: "-100%"}, 1000);
     },
 
     displayContent: function () {
-        var panelTO = (this.scrwth > 992) ? 3000 : 2000;
+        var panelTO = (window.innerWidth > 992) ? 3000 : 2000;
         $("#panel").delay(panelTO).fadeTo(1000, 1);
-        if (this.scrwth > 992) {
+        if (window.innerWidth > 992) {
             $(".slideout-menu").delay(2000).fadeTo(1000, 1);
         }
     },
     resetAnim: function () {
-        if (this.scrwth > 992) {
+        if (window.innerWidth > 992) {
             $("#menu").show();
         }
         $("#panel").css("opacity", 1);
@@ -93,19 +89,19 @@ var mainView = {
         });
     },
     highlightCurrentPage: function () {
-        if (this.location == "") {
+        if (this.location === "") {
             $("#menu a[href]").first().parent("li").addClass("active")
         } else {
             $("#menu a[href]").each(function () {
-                if (this.href == window.location.href) {
+                if (this.href === window.location.href) {
                     $(this).parent("li").addClass("active");
                 }
             });
         }
     },
     setMapDimensions: function() {
-        if (this.scrwth < 992){
-            $("#map").width(this.scrwth - 40);
+        if (window.innerWidth < 992){
+            $("#map").width(window.innerWidth - 40);
         }
     },
     countdownInit: function (date) {
