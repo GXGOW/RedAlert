@@ -6,8 +6,7 @@ window.onload = function () {
 
     $("#panel").delay(panelTO).fadeTo(1000, 1);
     $(window).resize(function () {
-        mainView.scrwth = window.innerWidth;
-        if (mainView.scrwth > 992) {
+        if (window.innerWidth > 992) {
             this.slideout.disableTouch();
             $("header").css("opacity", 0);
         }
