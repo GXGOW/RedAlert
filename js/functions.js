@@ -1,3 +1,7 @@
+window.jQuery = window.$ = require('jquery');
+window.Slideout = require('slideout');
+window.slidesjs = require('../js/jquery.slides');
+
 var mainView = {
     storage: null,
     location: location.pathname.split('/').slice(-1)[0],

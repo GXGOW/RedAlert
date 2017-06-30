@@ -1,6 +1,9 @@
 .idea/
-css/.sass-cache/
+.sass-cache/
 node_modules/
 yarn.lock
-dist/
+build/
 images/sponsors
+*.map
+*.scssc
+package-lock.json

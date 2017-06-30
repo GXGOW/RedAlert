@@ -1,3 +1,5 @@
+window.jQuery = window.$ = require('jquery');
+window.slidesjs = require('../js/jquery.slides');
 
 window.onload = function () {
     $("#anim").toggle().delay(1000).animate({top: "-100%"}, 1000);
@@ -17,4 +19,5 @@ window.onload = function () {
     });
     $("#title").text(document.title.substring(document.title.lastIndexOf(" ")));
     $(".toggle-button").css("opacity",0);
+    $("#countdown").hide();
 };

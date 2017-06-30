@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="theme-color" content="#5c0000">
     <link rel="icon" sizes="244x244" href="images/icon.png ">
-    <link href="css/reset_browser_styles.min.css" rel="stylesheet">
-    <link href="css/styles.min.css" rel="stylesheet">
-    <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="build/reset.css" rel="stylesheet">
+    <link href="build/styles.min.css" rel="stylesheet">
+    <link href="build/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -42,8 +42,7 @@
     </div>
     <?php getAnim() ?>
 </div>
-<script src="js/jquery.min.js"></script>
-<script src="js/thanks.min.js"></script>
+<script src="build/functions.min.js"></script>
 </body>
 
 </html>
