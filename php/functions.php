@@ -16,7 +16,7 @@ function getHead()
     echo '<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="theme-color" content="#5c0000">
-    <link rel="icon" sizes="244x244" href="images/icon.png ">
+    <link rel="icon" href="images/icon.png">
     <link href="' . $prefix1 . 'build/reset.css" rel="stylesheet">
     <link href="' . $prefix1 . 'build/styles.min.css" rel="stylesheet">
     <script>
