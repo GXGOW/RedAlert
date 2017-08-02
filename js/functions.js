@@ -1,6 +1,10 @@
-window.jQuery = window.$ = require('jquery');
-window.Slideout = require('slideout');
-window.slidesjs = require('../js/jquery.slides');
+//Nodejs dependencies (try/catch constructie dient om webbrowser gerust te stellen)
+try {
+    window.jQuery = window.$ = require('jquery');
+    window.Slideout = require('slideout');
+    window.slidesjs = require('../js/jquery.slides');
+} catch (e) {
+}
 
 var mainView = {
     storage: null,

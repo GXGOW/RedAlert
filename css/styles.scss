@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: Digital-7;
-  src: url(../fonts/digital-7/digital-7.ttf);
+  src: url(../fonts/digital_7/digital-7.ttf);
 }
 
 /*Slideout menu*/
@@ -51,6 +51,26 @@
         &:hover {
           color: red;
         }
+      }
+    }
+  }
+  #social {
+    bottom: 3%;
+    position: absolute;
+    width: calc(100% - 10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+    a {
+      color: white;
+      img {
+        height: 30px;
+        width: auto;
+        padding-top: 11px;
       }
     }
   }
@@ -432,7 +452,7 @@ strong {
   .slideout-panel {
     width: auto;
     height: auto;
-    margin-left: 200px;
+    margin-left: 202px;
   }
   #main {
     padding: 5% 20% 10% 20%;

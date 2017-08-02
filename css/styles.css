@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
-@import url(../node_modules/font-awesome/css/font-awesome.css);
+@import url("../build/font-awesome/css/font-awesome.css");
 @font-face {
   font-family: Digital-7;
-  src: url(../fonts/digital-7/digital-7.ttf); }
+  src: url(../fonts/digital_7/digital-7.ttf); }
 /*Slideout menu*/
 #menu {
   position: fixed;
@@ -41,6 +41,23 @@
         display: block; }
         #menu ul li a:hover {
           color: red; }
+  #menu #social {
+    bottom: 3%;
+    position: absolute;
+    width: calc(100% - 10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 30px;
+    margin-left: 5px;
+    margin-right: 5px; }
+    #menu #social a {
+      color: white; }
+      #menu #social a img {
+        height: 30px;
+        width: auto;
+        padding-top: 11px; }
 
 .slideout-panel {
   position: relative;
@@ -348,7 +365,7 @@ strong {
   .slideout-panel {
     width: auto;
     height: auto;
-    margin-left: 200px; }
+    margin-left: 202px; }
 
   #main {
     padding: 5% 20% 10% 20%;
@@ -415,5 +432,3 @@ strong {
 
   #mapWrap #map {
     width: 700px; } }
-
-/*# sourceMappingURL=styles.css.map */

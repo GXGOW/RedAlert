@@ -43,6 +43,26 @@
     <?php getAnim() ?>
 </div>
 <script src="build/functions.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+        "palette": {
+            "popup": {
+                "background": "#000"
+            },
+            "button": {
+                "background": "#ff0000"
+            }
+        },
+        "content": {
+            "message": "Deze website gebruikt cookies.",
+            "dismiss": "OK",
+            "link": "Waarom?"
+        }
+    })});
+</script>
 </body>
 
 </html>
