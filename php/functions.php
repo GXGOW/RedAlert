@@ -10,16 +10,23 @@ if ((basename($_SERVER["PHP_SELF"])) === "index.php" || (basename($_SERVER["PHP_
     $prefix2 = "";
 }
 
+//Development of production?
+$dev;
+if ($_SERVER['SERVER_NAME'] == 'localhost') {
+    $dev = true;
+}
+
 function getHead()
 {
-    global $prefix1;
-    echo '<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <meta name="theme-color" content="#5c0000">
-    <link rel="icon" href="images/icon.png">
-    <link href="' . $prefix1 . 'build/reset.css" rel="stylesheet">
-    <link href="' . $prefix1 . 'build/styles.min.css" rel="stylesheet">
-    <script>
+    global $prefix1, $dev;
+    $links = ($dev ?
+        '<link href="' . $prefix1 . 'node_modules/reset-css/reset.css" rel="stylesheet"/>
+        <link href="' . $prefix1 . 'node_modules/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+        <link href="' . $prefix1 . 'css/styles.css" rel="stylesheet"/>
+        '
+        :
+        '<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+        <script>
         (function(i,s,o,g,r,a,m){i[\'GoogleAnalyticsObject\']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -27,25 +34,60 @@ function getHead()
 
         ga(\'create\', \'UA-91503104-1\', \'auto\');
         ga(\'send\', \'pageview\');
-    </script>';
+        </script>');
+    echo '<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="theme-color" content="#5c0000">
+    <link rel="icon" href="images/icon.png">'.$links;
 }
 
 function getScripts()
 {
-    global $prefix1;
-    echo '<script src="'.$prefix1.'build/functions.min.js"></script>';
+    global $prefix1, $dev;
+    $scripts = $dev ? '
+        <script src="'.$prefix1.'node_modules/jquery/dist/jquery.js"></script>
+        <script src="'.$prefix1.'node_modules/slideout/dist/slideout.js"></script>
+        <script src="'.$prefix1.'js/jquery.slides.js"></script>
+        <script src="'.$prefix1.'js/functions.js"></script>
+        <script src="'.$prefix1.'js/map.js"></script>
+        <script src="'.$prefix1.'js/tickets.js"></script>
+    ' :'<script src="'.$prefix1.'build/functions.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+    <script>
+    window.addEventListener("load", function(){
+        window.cookieconsent.initialise({
+            "palette": {
+                "popup": {
+                    "background": "#000"
+                },
+                "button": {
+                    "background": "#ff0000"
+                }
+            },
+            "content": {
+                "message": "Deze website gebruikt cookies.",
+                "dismiss": "OK",
+                "link": "Waarom?"
+            }
+        })});
+    </script>';
+    echo $scripts;
 }
 
 function getMenu()
 {
-    //TODO Facebook naar footer verplaatsen in plaats van als apart menu-item te houden
     global $prefix1, $prefix2;
     echo '<nav id="menu">
     <img id="logo" src="' . $prefix1 . 'images/logo.png" alt="Red Alert logo">
     <ul><li><a href="' . $prefix1 . 'index.php">&#xf015; Home</a>
     <li><a href="' . $prefix2 . 'lineup.php">&#xf017; Line-up</a></li><li><a href="' . $prefix2 . 'location.php">&#xf124; Locatie</a></li>
     <li><a href="' . $prefix2 . 'tickets.php">&#xf145; Tickets</a></li><li><a href="' . $prefix2 . 'sponsors.php">&#xf155; Sponsors</a></li>
-    <li><a href="https://www.facebook.com/RedAlertHamme/?fref=ts" target="_blank">&#xf230; Facebook</a></li></ul></nav>';
+    <div id="social">
+    <a href="https://www.facebook.com/RedAlertHamme/?fref=ts"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+    <a href="http://www.kljhamme.be" target="_blank"><img src="'.$prefix1.'images/klj.png"/></a>
+    <a href="https://github.com/GXGOW/RedAlert" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+    </div>
+    </nav>';
 }
 
 function getHeader()
