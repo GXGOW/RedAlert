@@ -81,7 +81,6 @@ var mainView = {
                     mainView.countdownInit(new Date('2017-03-18T21:00:00'));
                     setInterval(this.countdownInit, 1000);
                     break;
-
                 case "tickets":
                     $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDxFQATxIl21PpSjcu_dzg-PT7GzQwsyEc", function () {
                         initTickets();
@@ -91,6 +90,9 @@ var mainView = {
                     $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDxFQATxIl21PpSjcu_dzg-PT7GzQwsyEc", function () {
                         initMap();
                     });
+                    break;
+                case "lineup":
+                    mainView.expandInfo();
                     break;
                 default:
                     break;
