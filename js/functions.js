@@ -6,18 +6,21 @@ try {
 } catch (e) {
 }
 
+var isIE = !!window.MSInputMethodContext && !!document.documentMode;
+var isMobile = screen.width <= 992
 var mainView = {
     storage: null,
+    slideout: null,
     location: location.pathname.split('/').slice(-1)[0],
     init: function () {
         this.storage = window.sessionStorage;
-        this.setTitle();
-        this.slideout();
-        this.expandInfo();
-        if (this.location === "" || this.location === "index.php") {
-            this.countdownInit(new Date('2017-03-18T21:00:00'));
-            setInterval(this.countdownInit, 1000);
+        if (history.state != null) {
+            this.loadPage(history.state.page);
         }
+        else this.loadPage('index', true);
+        this.setTitle();
+        this.initMenu();
+        this.expandInfo();
         if (!this.checkStorage()) {
             this.setStorage();
             this.animateLogo();
@@ -46,26 +49,63 @@ var mainView = {
             }
         });
     },
-    slideout: function () {
-        //TODO menu misschien wat breder maken op desktop
-        var pad;
-        if (window.innerWidth <= 992) {
-            pad = 250;
-        } else {
-            pad = 202;
-        }
-        var slideout = new Slideout({
+    initMenu: function () {
+        this.slideout = new Slideout({
             'panel': document.getElementById('panel'),
             'menu': document.getElementById('menu'),
-            'padding': pad,
+            'padding': 250,
             'tolerance': 70
         });
         if (window.innerWidth > 992) {
-            slideout.disableTouch();
+            mainView.slideout.disableTouch();
         }
         // Toggle button
         document.querySelector('.toggle-button').addEventListener('click', function () {
-            slideout.toggle();
+            mainView.slideout.toggle();
+        });
+
+        $('#menu').find('a').each(function () {
+            $(this).click(function (e) {
+                e.preventDefault();
+                //mainView.changeSelected($(this));
+                if ($(this).attr('href')) {
+                    mainView.loadPage($(this).attr('href').split('#')[1], true);
+                }
+            });
+        });
+    },
+    loadPage: function (page, push) {
+        $('#main').load('html/' + page + '.php', function () {
+            switch(page){
+                case "index":
+                    mainView.countdownInit(new Date('2017-03-18T21:00:00'));
+                    setInterval(this.countdownInit, 1000);
+                    break;
+
+                case "tickets":
+                    $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDxFQATxIl21PpSjcu_dzg-PT7GzQwsyEc", function () {
+                        initTickets();
+                    });
+                    break;
+                case "location":
+                    $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDxFQATxIl21PpSjcu_dzg-PT7GzQwsyEc", function () {
+                        initMap();
+                    });
+                    break;
+                default:
+                    break;
+            }
+            //$('html, body').animate({scrollTop: '0px'}, 300);
+            if (isMobile) {
+                mainView.slideout.close();
+            }
+            if (push) {
+                history.pushState({
+                    page: page
+                }, null, page);
+            }
+            //mainView.setHeaderText();
+            mainView.setTitle();
         });
     },
     setStorage: function () {
@@ -130,12 +170,13 @@ var mainView = {
 
 window.onload = function () {
     mainView.init();
-    switch (mainView.location) {
-        case "location.php":
-        case "tickets.php":
-            $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDxFQATxIl21PpSjcu_dzg-PT7GzQwsyEc&callback=initMap");
-            break;
-        default:
-            break;
+};
+
+window.onpopstate = function (event) {
+    var page = 'index';
+    if (event.state) {
+        page = event.state.page;
     }
+    mainView.loadPage(page);
+    //mainView.changeSelected($('#menu').find('a[href="#' + page + '"]'));
 };

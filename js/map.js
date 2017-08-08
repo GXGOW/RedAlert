@@ -1,10 +1,11 @@
-var mapDiv = document.getElementById("map");
+var mapDiv;
 var Latlng = {
     lat: 51.1023047,
     lng: 4.1352369
 };
 
 function initMap() {
+    mapDiv = document.getElementById("map");
     mainView.setMapDimensions();
     var map = new google.maps.Map(mapDiv, {
         center: Latlng,

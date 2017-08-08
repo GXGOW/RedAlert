@@ -1,12 +1,13 @@
 var map;
 var marker;
-var mapDiv = document.getElementById("map");
+var mapDiv;
 var Latlng = {
     lat: 51.0928994,
     lng: 4.1364247
 };
 
-function initMap() {
+function initTickets() {
+    mapDiv = document.getElementById("map");
     mainView.setMapDimensions();
     map = new google.maps.Map(mapDiv, {
         center: Latlng,
