@@ -357,6 +357,8 @@ strong {
     position: relative; }
 
   #panel {
+    margin-left: 240px;
+    width: calc(100% - 240px);
     display: block;
     height: 100%;
     background-color: transparent;
