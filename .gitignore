@@ -5,3 +5,4 @@ build/
 images/sponsors
 *.scssc
 .yarnclean
+vscode/
