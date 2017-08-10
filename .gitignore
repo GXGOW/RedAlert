@@ -6,3 +6,4 @@ images/sponsors
 *.scssc
 .yarnclean
 .vscode/
+css/styles.css
