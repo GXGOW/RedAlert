@@ -15,14 +15,11 @@
     right: 0;
     z-index: 0;
     overflow-y: auto;
-    display: none;
     -webkit-overflow-scrolling: touch;
-    //styling
     background: url(../images/backgr_mobile.png);
     img {
         margin-bottom: 0;
     }
-    //Other styling
     width: 240px;
     #logo {
         width: 238px;
@@ -309,9 +306,7 @@ p {
 footer {
     position: absolute;
     bottom: 0;
-    height: 3em;
     padding-top: .8em;
-    padding-bottom: .8em;
     width: 100%;
     background-color: black;
     p,
@@ -409,8 +404,6 @@ strong {
         }
     }
     footer {
-        padding-top: 1em;
-        padding-bottom: 1em;
         p,
         a {
             font-size: 1em;
@@ -435,20 +428,19 @@ strong {
     #anim {
         padding-top: 0;
     }
-    footer {
-        position: relative;
-    }
     #panel {
         margin-left: 240px;
         width: calc(100% - 240px);
         display: block;
-        height: 100%;
         background-color: transparent;
         box-sizing: border-box;
         #logo {
             width: 100%;
             padding-left: 0;
         }
+    }
+    footer {
+        padding-bottom: .8em;
     }
     #main {
         padding: 5% 20% 10% 20%;
