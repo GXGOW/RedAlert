@@ -20,9 +20,9 @@
     img {
         margin-bottom: 0;
     }
-    width: 240px;
+    width: 250px;
     #logo {
-        width: 238px;
+        width: 248px;
         display: block;
         margin-top: .5em;
         padding-left: 2px;
@@ -234,11 +234,14 @@ body {
 
 #slides {
     display: none;
-    margin-bottom: 1em;
-}
-
-.slidesjs-slide {
-    width: 100%;
+    margin-top: 50%;
+    margin-bottom: 50%;
+    .slidesjs-play,
+    .slidesjs-stop {
+        color: white !important;
+        margin-left: 10px;
+        font-size: 2em;
+    }
 }
 
 .fa-arrow-right,
@@ -492,12 +495,6 @@ strong {
     #djlist {
         .dj {
             color: white;
-        }
-    }
-    #slides {
-        img {
-            width: auto !important;
-            height: auto !important;
         }
     }
     .fa-arrow-right,

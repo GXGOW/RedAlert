@@ -50,7 +50,7 @@ var mainView = {
         this.slideout = new Slideout({
             'panel': document.getElementById('panel'),
             'menu': document.getElementById('menu'),
-            'padding': 240,
+            'padding': 250,
             'tolerance': 70
         });
         if (window.innerWidth > 992) {
@@ -70,6 +70,7 @@ var mainView = {
                 }
             });
         });
+        mainView.initSlides();
     },
     loadPage: function(page, push) {
         $('#main').load('html/' + page + '.php', function() {
@@ -106,6 +107,42 @@ var mainView = {
             mainView.changeSelected($('#menu').find('a[href="#' + page + '"]'));
             //mainView.setHeaderText();
             mainView.setTitle();
+        });
+    },
+    initSlides: function() {
+        $.ajax({
+            url: "php/initSlideshow.php",
+            type: 'get',
+            success: function(data) {
+                $('#slides').append(data);
+                $(function() {
+                    $("#slides").slidesjs({
+                        width: 700,
+                        height: 450,
+                        navigation: {
+                            active: false,
+                            effect: "slide"
+                        },
+                        pagination: {
+                            active: false
+                        },
+                        play: {
+                            active: true,
+                            auto: true,
+                            effect: "slide",
+                            interval: 7000,
+                            pauseOnHover: true
+                        },
+                        callback: {
+                            loaded: function(number) {
+                                $('.slidesjs-play').empty().append('<i class="fa fa-play-circle" aria-hidden="true"></i>');
+                                $('.slidesjs-stop').empty().append('<i class="fa fa-stop-circle" aria-hidden="true"></i>');
+                            }
+                        }
+
+                    });
+                });
+            }
         });
     },
     changeSelected: function(elem) {
