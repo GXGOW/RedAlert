@@ -7,19 +7,17 @@ try {
 } catch (e) {}
 
 var isIE = !!window.MSInputMethodContext && !!document.documentMode;
-var isMobile = screen.width <= 992
+var isMobile = screen.width <= 992;
 var mainView = {
     slideout: null,
+    interval: null,
     location: location.pathname.split('/').slice(-1)[0],
     init: function() {
         if (history.state != null) {
             this.loadPage(history.state.page);
         } else this.loadPage('index', true);
-        this.countdownInit();
+        this.interval = this.countdownInit();
         setInterval(this.countdownInit, 1000);
-        //this.setTitle();
-        //this.initMenu();
-        //this.expandInfo();
         $('.arrow').click(function() {
             mainView.initSite();
         });
@@ -28,19 +26,19 @@ var mainView = {
         $('.arrow').fadeOut(500);
         $('body').append('<div id="wrap"></div>');
         $('#wrap').load('html/init.php', function() {
+            mainView.initMenu();
             mainView.loadPage('index', function() {
+                clearInterval(mainView.interval);
                 $('#wrap').show();
                 $('#home').animate({ "margin-top": "-100vh" }, 1000, function() {
                     $('#home').remove();
                     $('.arrow').remove();
                     $('#wrap').css('bottom', 'initial');
+                    mainView.initSlides();
                 });
             });
-
+            $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDxFQATxIl21PpSjcu_dzg-PT7GzQwsyEc");
         });
-    },
-    setTitle: function() {
-        $("#title").text(document.title.substring(document.title.lastIndexOf(" ")));
     },
 
     initMenu: function() {
@@ -50,9 +48,6 @@ var mainView = {
             'padding': 250,
             'tolerance': 70
         });
-        if (window.innerWidth > 992) {
-            mainView.slideout.disableTouch();
-        }
         // Toggle button
         document.querySelector('.toggle-button').addEventListener('click', function() {
             mainView.slideout.toggle();
@@ -62,16 +57,10 @@ var mainView = {
             $(this).click(function(e) {
                 e.preventDefault();
                 mainView.changeSelected($(this));
-                if ($(this).attr('href')) {
-                    mainView.loadPage($(this).attr('href').split('#')[1], true);
-                }
+                mainView.loadPage($(this).attr('href').split('#')[1], true);
+                mainView.changeTitle();
             });
         });
-        mainView.initSlides();
-    },
-    loadPage: function(page, callback) {
-        this.loadPage(page);
-        callback();
     },
     loadPage: function(page, push) {
         $('#main').load('html/' + page + '.php', function() {
@@ -79,14 +68,10 @@ var mainView = {
                 case "index":
                     break;
                 case "tickets":
-                    $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDxFQATxIl21PpSjcu_dzg-PT7GzQwsyEc", function() {
-                        initTickets();
-                    });
+                    initTickets();
                     break;
                 case "location":
-                    $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDxFQATxIl21PpSjcu_dzg-PT7GzQwsyEc", function() {
-                        initMap();
-                    });
+                    initMap();
                     break;
                 case "lineup":
                     mainView.expandInfo();
@@ -96,7 +81,7 @@ var mainView = {
             }
             $('html, body').animate({ scrollTop: '0px' }, 300);
             if (isMobile) {
-                //mainView.slideout.close();
+                mainView.slideout.close();
             }
             if (typeof push === 'function') {
                 push();
@@ -105,9 +90,6 @@ var mainView = {
                     page: page
                 }, null, page);
             }
-            mainView.changeSelected($('#menu').find('a[href="#' + page + '"]'));
-            //mainView.setHeaderText();
-            mainView.setTitle();
         });
     },
     initSlides: function() {
@@ -115,11 +97,14 @@ var mainView = {
             url: "php/initSlideshow.php",
             type: 'get',
             success: function(data) {
+                $('#menu').find('ul').after('<div id="slides"></div>');
+                //Workaround voor mobiele versie. Slides laden anders niet om een of andere reden
+                if (isMobile) $('.slideout-menu').css({ 'visibility': 'hidden', 'display': 'block' });
                 $('#slides').append(data);
                 $(function() {
                     $("#slides").slidesjs({
-                        width: 700,
-                        height: 450,
+                        width: 250,
+                        height: 200,
                         navigation: {
                             active: false,
                             effect: "slide"
@@ -138,9 +123,10 @@ var mainView = {
                             loaded: function(number) {
                                 $('.slidesjs-play').empty().append('<i class="fa fa-play-circle" aria-hidden="true"></i>');
                                 $('.slidesjs-stop').empty().append('<i class="fa fa-stop-circle" aria-hidden="true"></i>');
+                                //Deel 2 workaround
+                                if (isMobile) $('.slideout-menu').css({ 'visibility': 'visible', 'display': 'initial' });
                             }
                         }
-
                     });
                 });
             }
@@ -149,6 +135,11 @@ var mainView = {
     changeSelected: function(elem) {
         $('.active').removeClass('active');
         $(elem).addClass('active');
+    },
+    changeTitle: function() {
+        var title = $('.active').text().split(' ')[1];
+        $('title').text('Red Alert - ' + title);
+        $('#title').text(title);
     },
     expandInfo: function() {
         $(".dj").click(function() {
