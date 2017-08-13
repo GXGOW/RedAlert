@@ -2,16 +2,6 @@
     <img src="images/thanks.jpg" alt="Sfeerfoto">
 </picture>
 <div id="border">
-    <div id="countdown">
-        <div><span class="count" id="days"></span>
-            <p>dagen </p></div>
-        <div><span class="count" id="hrs"></span>
-            <p>uur </p></div>
-        <div><span class="count" id="min"></span>
-            <p>minuten </p></div>
-        <div><span class="count" id="sec"></span>
-            <p>seconden </p></div>
-    </div>
     <h2>6<sup>de</sup> editie Red Alert!</h2>
     <p>Het was weer een dik geslaagde editie! Bedankt aan iedereen die gekomen is en geholpen heeft om er weer
         een dik feestje van te maken! De foto's zijn ondertussen

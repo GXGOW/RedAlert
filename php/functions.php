@@ -47,6 +47,7 @@ function getScripts()
     $scripts = $dev ? '
         <script src="'.$prefix1.'node_modules/jquery/dist/jquery.js"></script>
         <script src="'.$prefix1.'node_modules/slideout/dist/slideout.js"></script>
+        <script src="'.$prefix1.'node_modules/countdown/countdown.js"></script>        
         <script src="'.$prefix1.'js/jquery.slides.js"></script>
         <script src="'.$prefix1.'js/functions.js"></script>
         <script src="'.$prefix1.'js/map.js"></script>
@@ -105,14 +106,7 @@ function getHeader()
 
 function getFooter()
 {
-    echo '<footer><p>Red Alert, een initiatief van <a href="http://kljhamme.be/" target="_blank">KLJ Hamme-Center</a></p>
-        <p>&#xf1f9; 2016-2017 Nicolas Loots</p>';
-}
-
-function getAnim()
-{
-    global $prefix1;
-    echo '<img id="anim" src="' . $prefix1 . 'images/logo.png " alt="Red Alert logo">';
+    echo '<footer><p>Red Alert, een initiatief van <a href="http://kljhamme.be/" target="_blank">KLJ Hamme-Center</a></p><p>&#xf1f9; 2016-2017 Nicolas Loots</p>';
 }
 
 ?>

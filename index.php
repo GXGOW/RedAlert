@@ -13,16 +13,20 @@
             display: none;
         }</style>
 </noscript>
-<div id="wrap">
-    <?php getMenu(); ?>
-    <div id="panel">
-        <?php getHeader() ?>
-        <div id="main">
+<div id=home>
+        <img src="images/logo.png"/>
+        <div id="countdown">
+            <div><span class="count" id="days"></span>
+                <p>dagen </p></div>
+            <div><span class="count" id="hrs"></span>
+                <p>uur </p></div>
+            <div><span class="count" id="min"></span>
+                <p>minuten </p></div>
+            <div><span class="count" id="sec"></span>
+                <p>seconden </p></div>
         </div>
-        <?php getFooter() ?>
     </div>
-    <?php getAnim() ?>
-</div>
+    <div class="arrow bounce"></div>
 <?php getScripts(); ?>
 </body>
 
