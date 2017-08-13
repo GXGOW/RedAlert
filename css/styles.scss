@@ -81,8 +81,11 @@
 
 /*Slideout menu*/
 
-#menu {
+.slideout-menu {
     display: none;
+}
+
+#menu {
     position: fixed;
     left: 0;
     top: 0;
@@ -142,7 +145,7 @@
         a {
             color: white;
             img {
-                height: 30px;
+                height: 42px;
                 width: auto;
                 padding-top: 11px;
             }
@@ -307,8 +310,7 @@ body {
 
 #slides {
     display: none;
-    margin-top: 50%;
-    margin-bottom: 50%;
+    margin-top: 10px;
     .slidesjs-play,
     .slidesjs-stop {
         color: white !important;
@@ -463,6 +465,9 @@ strong {
 }
 
 @media screen and (min-width: 992px) {
+    .slideout-menu {
+        display: block;
+    }
     #home {
         img {
             width: 50%;
@@ -475,8 +480,8 @@ strong {
         padding-top: 0;
     }
     #panel {
-        margin-left: 240px;
-        width: calc(100% - 240px);
+        margin-left: 250px;
+        width: calc(100% - 250px);
         display: block;
         background-color: transparent;
         box-sizing: border-box;
@@ -563,5 +568,9 @@ strong {
         #map {
             width: 700px;
         }
+    }
+    #slides {
+        margin-top: 50%;
+        margin-bottom: 50%;
     }
 }
