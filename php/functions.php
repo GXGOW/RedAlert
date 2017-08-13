@@ -80,7 +80,6 @@ function getMenu()
     global $prefix1, $prefix2;
     echo '<nav id="menu">
     <img id="logo" src="' . $prefix1 . 'images/logo.png" alt="Red Alert logo">
-    <div id="menuflex">
     <ul><li><a href="#index">&#xf015; Home</a>
     <li><a href="#lineup">&#xf017; Line-up</a></li><li><a href="#location">&#xf124; Locatie</a></li>
     <li><a href="#tickets">&#xf145; Tickets</a></li></ul>
@@ -90,7 +89,6 @@ function getMenu()
     <a href="https://www.facebook.com/RedAlertHamme/?fref=ts"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
     <a href="http://www.kljhamme.be" target="_blank"><img src="'.$prefix1.'images/klj.png"/></a>
     <a href="https://github.com/GXGOW/RedAlert" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
-    </div>
     </div>
     </nav>';
 }
