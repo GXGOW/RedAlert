@@ -72,10 +72,10 @@ var mainView = {
                 case "index":
                     break;
                 case "tickets":
-                    setTimeout(initTickets(), 1500);
+                    initMap('tickets')
                     break;
                 case "location":
-                    setTimeout(initMap(), 1500);
+                    initMap('location')
                     break;
                 case "lineup":
                     mainView.expandInfo();

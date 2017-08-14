@@ -51,7 +51,6 @@ function getScripts()
         <script src="'.$prefix1.'js/jquery.slides.js"></script>
         <script src="'.$prefix1.'js/functions.js"></script>
         <script src="'.$prefix1.'js/map.js"></script>
-        <script src="'.$prefix1.'js/tickets.js"></script>
     ' :'<script src="'.$prefix1.'build/functions.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
     <script>
