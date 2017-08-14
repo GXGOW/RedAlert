@@ -142,7 +142,7 @@ var mainView = {
     },
     switchAnim: function() {
         $('#main').animate({ 'bottom': '0' }, 1000);
-        $('#temp').animate({ 'top': '-100vh', 'height': '0' }, 1000, function() {
+        $('#temp').animate({ 'top': '-100vh', 'height': '0', 'padding': '0' }, 1000, function() {
             $('#temp').remove();
         });
 
