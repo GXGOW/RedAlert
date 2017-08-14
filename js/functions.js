@@ -55,7 +55,7 @@ var mainView = {
             mainView.slideout.toggle();
         });
 
-        $('#menu').find('a').each(function() {
+        $('#menu').find('ul a').each(function() {
             $(this).click(function(e) {
                 e.preventDefault();
                 mainView.changeSelected($(this));
@@ -120,7 +120,7 @@ var mainView = {
                             auto: true,
                             effect: "slide",
                             interval: 7000,
-                            pauseOnHover: true
+                            pauseOnHover: false
                         },
                         callback: {
                             loaded: function(number) {
