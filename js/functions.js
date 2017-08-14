@@ -59,9 +59,7 @@ var mainView = {
             $(this).click(function(e) {
                 e.preventDefault();
                 mainView.changeSelected($(this));
-                $('#main').attr('id', 'temp');
-                $('#temp').after('<div id="main" class="main"></div>');
-                $('#main').css('bottom', '-100vh');
+                mainView.initAnim();
                 mainView.loadPage($(this).attr('href').split('#')[1], true);
                 mainView.switchAnim();
                 mainView.changeTitle();
@@ -74,10 +72,10 @@ var mainView = {
                 case "index":
                     break;
                 case "tickets":
-                    initTickets();
+                    setTimeout(initTickets(), 1500);
                     break;
                 case "location":
-                    initMap();
+                    setTimeout(initMap(), 1500);
                     break;
                 case "lineup":
                     mainView.expandInfo();
@@ -137,6 +135,11 @@ var mainView = {
             }
         });
     },
+    initAnim: function() {
+        $('#main').attr('id', 'temp');
+        $('#temp').after('<div id="main" class="main"></div>');
+        $('#main').css('bottom', '-100vh');
+    },
     switchAnim: function() {
         $('#main').animate({ 'bottom': '0' }, 1000);
         $('#temp').animate({ 'top': '-100vh', 'height': '0' }, 1000, function() {
@@ -186,6 +189,7 @@ window.onpopstate = function(event) {
     if (event.state) {
         page = event.state.page;
     }
+    mainView.initAnim();
     mainView.loadPage(page);
-
+    mainView.switchAnim();
 };
