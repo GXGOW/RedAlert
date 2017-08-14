@@ -469,9 +469,14 @@ strong {
         display: block;
     }
     #home {
-        img {
-            width: 50%;
-        }
+        padding-top: 0;
+        margin-left: 25%;
+        margin-right: 25%;
+        width: 50%;
+    }
+    .arrow {
+        width: 80px;
+        height: 80px;
     }
     #logo {
         width: 225px;

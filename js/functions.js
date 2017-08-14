@@ -27,9 +27,11 @@ var mainView = {
         $('body').append('<div id="wrap"></div>');
         $('#wrap').load('html/init.php', function() {
             mainView.initMenu();
+            $('.slideout-menu').hide();
             mainView.loadPage('index', function() {
                 clearInterval(mainView.interval);
                 $('#wrap').show();
+                $('.slideout-menu').fadeIn(1000);
                 $('#home').animate({ "margin-top": "-100vh" }, 1000, function() {
                     $('#home').remove();
                     $('.arrow').remove();
