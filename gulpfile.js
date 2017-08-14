@@ -17,7 +17,7 @@ gulp.task('default', ['watch-sass', 'bundle']);
 // Browserify JS + CSS
 
 const params = {
-    entries: ['js/css.js', 'js/functions.js', 'js/map.js', 'js/tickets.js'],
+    entries: ['js/css.js', 'js/functions.js', 'js/map.js'],
     debug: true,
     transform: [
         ['browserify-css']
