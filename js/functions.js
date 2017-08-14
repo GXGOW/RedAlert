@@ -59,7 +59,11 @@ var mainView = {
             $(this).click(function(e) {
                 e.preventDefault();
                 mainView.changeSelected($(this));
+                $('#main').attr('id', 'temp');
+                $('#temp').after('<div id="main" class="main"></div>');
+                $('#main').css('bottom', '-100vh');
                 mainView.loadPage($(this).attr('href').split('#')[1], true);
+                mainView.switchAnim();
                 mainView.changeTitle();
             });
         });
@@ -132,6 +136,13 @@ var mainView = {
                 });
             }
         });
+    },
+    switchAnim: function() {
+        $('#main').animate({ 'bottom': '0' }, 1000);
+        $('#temp').animate({ 'top': '-100vh', 'height': '0' }, 1000, function() {
+            $('#temp').remove();
+        });
+
     },
     changeSelected: function(elem) {
         $('.active').removeClass('active');
