@@ -27,11 +27,11 @@ var mainView = {
         $('body').append('<div id="wrap"></div>');
         $('#wrap').load('html/init.php', function() {
             mainView.initMenu();
-            $('#menu').hide();
+            if (!isMobile) $('#menu').hide();
             mainView.loadPage('index', function() {
                 clearInterval(mainView.interval);
                 $('#wrap').show();
-                $('#menu').fadeIn(1000);
+                if (!isMobile) $('#menu').fadeIn(1000);
                 $('#home').animate({ "margin-top": "-100vh" }, 1000, function() {
                     $('#home').remove();
                     $('.arrow').remove();
@@ -81,7 +81,6 @@ var mainView = {
                 default:
                     break;
             }
-            $('html, body').animate({ scrollTop: '0px' }, 300);
             if (isMobile) {
                 mainView.slideout.close();
             }
