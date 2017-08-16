@@ -17,10 +17,14 @@ gulp.task('default', ['watch-sass', 'bundle']);
 // Browserify JS + CSS
 
 const params = {
-    entries: ['js/css.js', 'js/functions.js', 'js/map.js'],
+    entries: ['js/css.js', 'js/functions.js'],
     debug: true,
+    global: true,
     transform: [
-        ['browserify-css']
+        ['browserify-css', {
+            rebaseUrls: true,
+            rootDir: '.'
+        }]
     ],
 };
 const opts = assign({}, watchify.args, params);
