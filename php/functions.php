@@ -1,14 +1,5 @@
 <?php
 date_default_timezone_set("Europe/Brussels");
-$prefix1;
-$prefix2;
-if ((basename($_SERVER["PHP_SELF"])) === "index.php" || (basename($_SERVER["PHP_SELF"])) === "thanks.php") {
-    $prefix1 = "";
-    $prefix2 = "html/";
-} else {
-    $prefix1 = "../";
-    $prefix2 = "";
-}
 
 //Development of production?
 $dev;
@@ -18,11 +9,11 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
 
 function getHead()
 {
-    global $prefix1, $dev;
+    global $dev;
     $links = ($dev ?
-        '<link href="' . $prefix1 . 'node_modules/reset-css/reset.css" rel="stylesheet"/>
-        <link href="' . $prefix1 . 'node_modules/font-awesome/css/font-awesome.css" rel="stylesheet"/>
-        <link href="' . $prefix1 . 'css/styles.css" rel="stylesheet"/>
+        '<link href="node_modules/reset-css/reset.css" rel="stylesheet"/>
+        <link href="node_modules/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+        <link href="css/styles.css" rel="stylesheet"/>
         '
         :
         '<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
@@ -43,21 +34,20 @@ function getHead()
 
 function getScripts()
 {
-    global $prefix1, $dev;
+    global $dev;
     $scripts = $dev ? '
-        <script src="'.$prefix1.'node_modules/jquery/dist/jquery.js"></script>
-        <script src="'.$prefix1.'node_modules/slideout/dist/slideout.js"></script>
-        <script src="'.$prefix1.'node_modules/countdown/countdown.js"></script>        
-        <script src="'.$prefix1.'js/jquery.slides.js"></script>
-        <script src="'.$prefix1.'js/functions.js"></script>
-    ' :'<script src="'.$prefix1.'build/functions.min.js"></script>
+        <script src="node_modules/jquery/dist/jquery.js"></script>
+        <script src="node_modules/slideout/dist/slideout.js"></script>
+        <script src="node_modules/countdown/countdown.js"></script>        
+        <script src="js/jquery.slides.js"></script>
+        <script src="js/functions.js"></script>
+    ' :'<script src="build/functions.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>';
     echo $scripts;
 }
 
 function getMenu()
 {
-    global $prefix1, $prefix2;
     echo '<nav id="menu">
     <img id="logo" src="images/logo.png" alt="Red Alert logo">
     <ul><li><a href="#index" class="active">&#xf015; Home</a>
