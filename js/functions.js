@@ -83,6 +83,7 @@ var mainView = {
                 default:
                     break;
             }
+            mainView.changeSelected($('#menu').find('a[href="#' + page + '"]'));
             if (isMobile) {
                 mainView.slideout.close();
             }
