@@ -26,20 +26,19 @@ function getHead()
         '
         :
         '<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
-        ');
+        <script>
+        (function(i,s,o,g,r,a,m){i[\'GoogleAnalyticsObject\']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,\'script\',\'https://www.google-analytics.com/analytics.js\',\'ga\');
+    
+        ga(\'create\', \'UA-91503104-1\', \'auto\');
+        ga(\'send\', \'pageview\');
+        </script>');
     echo '<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="theme-color" content="#5c0000">
-    <link rel="icon" href="images/icon.png">'.$links;
-    '<script>
-    (function(i,s,o,g,r,a,m){i[\'GoogleAnalyticsObject\']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,\'script\',\'https://www.google-analytics.com/analytics.js\',\'ga\');
-
-    ga(\'create\', \'UA-91503104-1\', \'auto\');
-    ga(\'send\', \'pageview\');
-    </script>';
+    <link rel="icon" href="images/icon.png">'.$links;;
 }
 
 function getScripts()
@@ -60,7 +59,7 @@ function getMenu()
 {
     global $prefix1, $prefix2;
     echo '<nav id="menu">
-    <img id="logo" src="' . $prefix1 . 'images/logo.png" alt="Red Alert logo">
+    <img id="logo" src="images/logo.png" alt="Red Alert logo">
     <ul><li><a href="#index" class="active">&#xf015; Home</a>
     <li><a href="#lineup">&#xf017; Line-up</a></li><li><a href="#location">&#xf124; Locatie</a></li>
     <li><a href="#tickets">&#xf145; Tickets</a></li></ul>
