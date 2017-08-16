@@ -49,7 +49,6 @@ function bundle() {
 gulp.task('sass', () =>
     sass('css/styles.scss', { sourcemap: false })
     .on('error', gutil.log.bind(gutil, 'Sass Error'))
-    .pipe(cleanCSS())
     .pipe(gulp.dest('css/'))
 );
 
