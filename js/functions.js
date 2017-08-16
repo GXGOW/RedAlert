@@ -11,7 +11,6 @@ var isMobile = screen.width <= 992;
 var mainView = {
     slideout: null,
     interval: null,
-    location: location.pathname.split('/').slice(-1)[0],
     init: function() {
         if (history.state != null) {
             this.loadPage(history.state.page);
@@ -40,6 +39,7 @@ var mainView = {
                 });
             });
             $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDxFQATxIl21PpSjcu_dzg-PT7GzQwsyEc");
+            mainView.initCookieBanner();
         });
     },
 
@@ -72,10 +72,10 @@ var mainView = {
                 case "index":
                     break;
                 case "tickets":
-                    initMap('tickets')
+                    mapView.initMap('tickets')
                     break;
                 case "location":
-                    initMap('location')
+                    mapView.initMap('location')
                     break;
                 case "lineup":
                     mainView.expandInfo();
@@ -162,11 +162,6 @@ var mainView = {
             $(this).next().slideToggle(500);
         });
     },
-    setMapDimensions: function() {
-        if (window.innerWidth < 992) {
-            $("#map").width(window.innerWidth - 40);
-        }
-    },
     countdownInit: function() {
         var date = new Date('2018-03-18 21:00:00');
         var ctn = countdown(new Date(), date, countdown.DAYS |
@@ -177,8 +172,95 @@ var mainView = {
         $("#hrs").text(ctn.hours);
         $("#min").text(ctn.minutes);
         $("#sec").text(ctn.seconds);
+    },
+    initCookieBanner: function() {
+        if (window.cookieconsent) {
+            window.cookieconsent.initialise({
+                "palette": {
+                    "popup": {
+                        "background": "#000"
+                    },
+                    "button": {
+                        "background": "#ff0000"
+                    }
+                },
+                "content": {
+                    "message": "Deze website gebruikt cookies.",
+                    "dismiss": "OK",
+                    "link": "Waarom?"
+                }
+            })
+        }
     }
 };
+
+var mapView = {
+    map: null,
+    marker: null,
+    mapDiv: null,
+    title: null,
+    latlng: null,
+    initMap: function(page) {
+        this.mapDiv = $('#main').find('#map')[0];
+        this.setMapDimensions();
+        switch (page) {
+            case 'location':
+                this.latlng = {
+                    lat: 51.1023047,
+                    lng: 4.1352369
+                };
+                title = 'Hambiance Hamme';
+                break;
+            case 'tickets':
+                this.latlng = {
+                    lat: 51.0928994,
+                    lng: 4.1364247
+                };
+                this.title = 'Jeugddienst Hamme'
+                $("#vvk li").each(function() {
+                    $(this).on("click", function() {
+                        mapView.changeMap($(this).text().split(" ")[0]);
+                    })
+                });
+        }
+        this.map = new google.maps.Map(this.mapDiv, {
+            center: this.latlng,
+            zoom: 16
+        });
+
+        this.marker = new google.maps.Marker({
+            position: this.latlng,
+            map: this.map,
+            icon: 'images/letter.png',
+            title: title
+        });
+    },
+    changeMap: function(address) {
+        switch (address) {
+            case "Jeugddienst":
+                this.latlng = {
+                    lat: 51.1020762,
+                    lng: 4.134353
+                };
+                this.marker.setTitle(this.marker.name = "Jeugddienst Hamme");
+                break;
+            case "Nachtwinkel":
+                this.latlng = {
+                    lat: 51.0928994,
+                    lng: 4.1364247
+                };
+                this.marker.setTitle(this.marker.name = "Nachtwinkel Apu");
+                break;
+        }
+        this.map.panTo(this.latlng);
+        this.marker.setPosition(this.latlng);
+    },
+    setMapDimensions: function() {
+        if (window.innerWidth < 992) {
+            $("#map").width(window.innerWidth - 40);
+        }
+    }
+}
 
 window.onload = function() {
     mainView.init();
