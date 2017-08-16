@@ -15,8 +15,8 @@ var mainView = {
         if (history.state != null) {
             this.loadPage(history.state.page);
         } else this.loadPage('index', true);
-        this.interval = this.countdownInit();
-        setInterval(this.countdownInit, 1000);
+        this.interval = this.initCountdown();
+        setInterval(this.initCountdown, 1000);
         $('.arrow').click(function() {
             mainView.initSite();
         });
@@ -162,8 +162,8 @@ var mainView = {
             $(this).next().slideToggle(500);
         });
     },
-    countdownInit: function() {
-        var date = new Date('2018-03-18 21:00:00');
+    initCountdown: function() {
+        var date = new Date('2018-03-03 21:00:00');
         var ctn = countdown(new Date(), date, countdown.DAYS |
             countdown.HOURS |
             countdown.MINUTES |
