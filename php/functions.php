@@ -25,20 +25,21 @@ function getHead()
         <link href="' . $prefix1 . 'css/styles.css" rel="stylesheet"/>
         '
         :
-        '<link rel="stylesheet" type="text/css" href="cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
-        <script>
-        (function(i,s,o,g,r,a,m){i[\'GoogleAnalyticsObject\']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,\'script\',\'https://www.google-analytics.com/analytics.js\',\'ga\');
-
-        ga(\'create\', \'UA-91503104-1\', \'auto\');
-        ga(\'send\', \'pageview\');
-        </script>');
+        '<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+        ');
     echo '<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="theme-color" content="#5c0000">
     <link rel="icon" href="images/icon.png">'.$links;
+    '<script>
+    (function(i,s,o,g,r,a,m){i[\'GoogleAnalyticsObject\']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,\'script\',\'https://www.google-analytics.com/analytics.js\',\'ga\');
+
+    ga(\'create\', \'UA-91503104-1\', \'auto\');
+    ga(\'send\', \'pageview\');
+    </script>';
 }
 
 function getScripts()
@@ -50,27 +51,8 @@ function getScripts()
         <script src="'.$prefix1.'node_modules/countdown/countdown.js"></script>        
         <script src="'.$prefix1.'js/jquery.slides.js"></script>
         <script src="'.$prefix1.'js/functions.js"></script>
-        <script src="'.$prefix1.'js/map.js"></script>
     ' :'<script src="'.$prefix1.'build/functions.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
-    <script>
-    window.addEventListener("load", function(){
-        window.cookieconsent.initialise({
-            "palette": {
-                "popup": {
-                    "background": "#000"
-                },
-                "button": {
-                    "background": "#ff0000"
-                }
-            },
-            "content": {
-                "message": "Deze website gebruikt cookies.",
-                "dismiss": "OK",
-                "link": "Waarom?"
-            }
-        })});
-    </script>';
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>';
     echo $scripts;
 }
 
@@ -84,7 +66,7 @@ function getMenu()
     <li><a href="#tickets">&#xf145; Tickets</a></li></ul>
     <div id="social">
     <a href="https://www.facebook.com/RedAlertHamme/?fref=ts"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-    <a href="http://www.kljhamme.be" target="_blank"><img src="'.$prefix1.'images/klj.png"/></a>
+    <a href="http://www.kljhamme.be" target="_blank"><img src="images/klj.png"/></a>
     <a href="https://github.com/GXGOW/RedAlert" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
     </div>
     </nav>';
