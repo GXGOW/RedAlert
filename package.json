@@ -27,7 +27,6 @@
         "watchify": "^3.9.0"
     },
     "scripts": {
-        "gulp": "gulp",
-        "gulp-minify": "gulp-minify"
+        "gulp": "gulp"
     }
 }
