@@ -1,3 +1,41 @@
-<p align="center"><img src="http://www.kljhamme.be/redalert/images/logo.png" /></p>
-<p>Source code van de website voor Red Alert, een fuif georganiseerd door KLJ Hamme-Center</p>
-<p>Wil je deze repository als basis van je site gebruiken? Geen probleem, maar vergeet vooral niet om de <a href="https://github.com/GXGOW/RedAlert/blob/master/LICENSE.txt">licentie file</a> door te lezen.
+# Red Alert
+
+![Red Alert logo](http://www.kljhamme.be/redalert/images/logo.png)
+
+Source code van de website voor Red Alert, een fuif georganiseerd door KLJ Hamme-Center. Deze code is vrij te (her)gebruiken zolang deze repository als bron wordt vermeld en alle wijzigingen ook gepubliceerd worden. Zie [LICENSE.txt](https://github.com/GXGOW/RedAlert/blob/master/LICENSE.txt) voor meer info.
+
+## Vereiste software
+
+Om dit project te kunnen bewerken/bekijken, is volgende software vereist
+
+* [NodeJS](https://nodejs.org/en/download/current)
+
+* [yarn](https://github.com/yarnpkg/yarn/releases/tag/v0.27.5)
+
+* [php 7](http://php.net/downloads.php)
+
+* [Ruby](https://www.ruby-lang.org/en/downloads)
+
+## Project initialiseren
+
+Voer volgende stappen uit
+
+```bash
+# Clone de repository
+git clone https://github.com/GXGOW/RedAlert.git
+
+# Navigeer naar de map
+cd RedAlert
+
+# Download de vereiste node_modules met Yarn (dit kan even duren)
+yarn install
+
+# (Optioneel) Installeer gulp globally (hierdoor is enkel 'gulp' voldoende om de gulp-scripts te runnen i.p.v. 'npm run gulp')
+yarn global add gulp
+
+# Gulp-script runnen om stylesheets en scripts te compileren naar build/functions.min.js
+npm run gulp # of 'gulp', als vorige stap is uitgevoerd
+
+```
+
+Zo, veel plezier ermee!
