@@ -411,7 +411,7 @@ cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-clean-css@4.1.7, clean-css@^4.1.4, clean-css@^4.1.5:
+clean-css@^4.1.4, clean-css@^4.1.5:
   version "4.1.7"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.1.7.tgz#b9aea4f85679889cf3eae8b40349ec4ebdfdd032"
   dependencies:
@@ -561,6 +561,10 @@ crypto-browserify@^3.0.0:
     pbkdf2 "^3.0.3"
     public-encrypt "^4.0.0"
     randombytes "^2.0.0"
+
+css-ripple-effect@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/css-ripple-effect/-/css-ripple-effect-1.0.5.tgz#6963b752aaf59babbd3fea3ec0da5d44e9122efb"
 
 css@^2.2.1:
   version "2.2.1"
@@ -1034,15 +1038,6 @@ graceful-fs@~1.2.0:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-1.2.3.tgz#15a4806a57547cb2d2dbf27f42e89a8c3451b364"
 
-gulp-clean-css@^3.4.2:
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/gulp-clean-css/-/gulp-clean-css-3.7.0.tgz#54b33526dc899930949fb37b4cacf851c5d5d93b"
-  dependencies:
-    clean-css "4.1.7"
-    gulp-util "3.0.8"
-    through2 "2.0.3"
-    vinyl-sourcemaps-apply "0.2.1"
-
 gulp-filter@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/gulp-filter/-/gulp-filter-5.0.0.tgz#cfa81966fb67884f2ba754b067152929428d59bc"
@@ -1050,19 +1045,6 @@ gulp-filter@^5.0.0:
     gulp-util "^3.0.6"
     multimatch "^2.0.0"
     streamfilter "^1.0.5"
-
-gulp-ignore@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/gulp-ignore/-/gulp-ignore-2.0.2.tgz#5c2ea2a0a4402e0ab4a2bcd12efd9295344d78f2"
-  dependencies:
-    gulp-match "^1.0.3"
-    through2 "^2.0.1"
-
-gulp-match@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/gulp-match/-/gulp-match-1.0.3.tgz#91c7c0d7f29becd6606d57d80a7f8776a87aba8e"
-  dependencies:
-    minimatch "^3.0.3"
 
 gulp-ruby-sass@^2.1.1:
   version "2.1.1"
@@ -1094,7 +1076,7 @@ gulp-uglify@^3.0.0:
     uglify-js "^3.0.5"
     vinyl-sourcemaps-apply "^0.2.0"
 
-gulp-util@3.0.8, gulp-util@^3.0.0, gulp-util@^3.0.4, gulp-util@^3.0.6, gulp-util@^3.0.8:
+gulp-util@^3.0.0, gulp-util@^3.0.4, gulp-util@^3.0.6, gulp-util@^3.0.8:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/gulp-util/-/gulp-util-3.0.8.tgz#0054e1e744502e27c04c187c3ecc505dd54bbb4f"
   dependencies:
@@ -1695,7 +1677,7 @@ minimatch@^2.0.1:
   dependencies:
     brace-expansion "^1.0.0"
 
-minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4:
+minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
   dependencies:
@@ -2450,7 +2432,7 @@ tar@^2.2.1:
     fstream "^1.0.2"
     inherits "2"
 
-through2@2.0.3, through2@2.0.x, through2@^2.0.0, through2@^2.0.1:
+through2@2.0.x, through2@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.3.tgz#0004569b37c7c74ba39c43f3ced78d1ad94140be"
   dependencies:
@@ -2603,7 +2585,7 @@ vinyl-source-stream@^1.1.0:
     through2 "^0.6.1"
     vinyl "^0.4.3"
 
-vinyl-sourcemaps-apply@0.2.1, vinyl-sourcemaps-apply@^0.2.0:
+vinyl-sourcemaps-apply@^0.2.0:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/vinyl-sourcemaps-apply/-/vinyl-sourcemaps-apply-0.2.1.tgz#ab6549d61d172c2b1b87be5c508d239c8ef87705"
   dependencies:

@@ -1,7 +1,6 @@
 const gulp = require('gulp');
 const gutil = require('gulp-util');
 const uglifyjs = require('gulp-uglify');
-const cleanCSS = require('gulp-clean-css');
 const sass = require('gulp-ruby-sass');
 const filter = require('gulp-filter');
 const browserify = require('browserify');
