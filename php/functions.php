@@ -14,6 +14,7 @@ function getHead()
         '<link href="node_modules/reset-css/reset.css" rel="stylesheet"/>
         <link href="node_modules/font-awesome/css/font-awesome.css" rel="stylesheet"/>
         <link href="css/styles.css" rel="stylesheet"/>
+        <link href="node_modules/css-ripple-effect/dist/ripple.css" rel="stylesheet"/>        
         '
         :
         '<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
@@ -50,9 +51,10 @@ function getMenu()
 {
     echo '<nav id="menu">
     <img id="logo" src="images/logo.png" alt="Red Alert logo">
-    <ul><li><a href="#index" class="active">&#xf015; Home</a>
-    <li><a href="#lineup">&#xf017; Line-up</a></li><li><a href="#location">&#xf124; Locatie</a></li>
-    <li><a href="#tickets">&#xf145; Tickets</a></li></ul>
+    <ul><li><a href="#index" class="ripple active">&#xf015; Home</a>
+    <li><a class="ripple" href="#lineup">&#xf017; Line-up</a></li>
+    <li><a class="ripple" href="#location">&#xf124; Locatie</a></li>
+    <li><a class="ripple" href="#tickets">&#xf145; Tickets</a></li></ul>
     <div id="social">
     <a href="https://www.facebook.com/RedAlertHamme/?fref=ts"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
     <a href="http://www.kljhamme.be" target="_blank"><img src="images/klj.png"/></a>
