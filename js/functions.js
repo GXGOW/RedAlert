@@ -12,7 +12,6 @@ var mainView = {
     slideout: null,
     interval: null,
     init: function() {
-        if (isIE) this.redirectIE();
         if (history.state != null) {
             this.loadPage(history.state.page);
         } else this.loadPage('index', true);
@@ -193,9 +192,6 @@ var mainView = {
                 }
             })
         }
-    },
-    redirectIE: function() {
-        window.location = 'html/lap.html';
     }
 };
 
@@ -268,6 +264,9 @@ var mapView = {
 }
 
 window.onload = function() {
+    if (isIE) {
+        window.location = 'html/lap.html';
+    }
     mainView.init();
 };
 
