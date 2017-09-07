@@ -4,6 +4,7 @@
 
 Source code van de website voor Red Alert, een fuif georganiseerd door KLJ Hamme-Center. Deze code is vrij te (her)gebruiken zolang deze repository als bron wordt vermeld en alle wijzigingen ook gepubliceerd worden. Zie [LICENSE.txt](https://github.com/GXGOW/RedAlert/blob/master/LICENSE.txt) voor meer info.
 
+Voortgang en overzicht van nieuwe functies en bugfixes zijn beschikbaar op [Trello](https://trello.com/b/vrjoJUx3).
 ## Vereiste software
 
 Om dit project te kunnen bewerken/bekijken, is volgende software vereist
@@ -30,11 +31,11 @@ cd RedAlert
 # Download de vereiste node_modules met Yarn (dit kan even duren)
 yarn install
 
-# (Optioneel) Installeer gulp globally (hierdoor is enkel 'gulp' voldoende om de gulp-scripts te runnen i.p.v. 'npm run gulp')
+# Installeer gulp globaal (hierdoor is enkel 'gulp' voldoende om de gulp-scripts te runnen i.p.v. 'npm run gulp')
 yarn global add gulp
 
 # Gulp-script runnen om stylesheets en scripts te compileren naar build/functions.min.js
-npm run gulp # of 'gulp', als vorige stap is uitgevoerd
+gulp
 
 ```
 
