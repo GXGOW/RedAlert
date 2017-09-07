@@ -9,13 +9,13 @@ Voortgang en overzicht van nieuwe functies en bugfixes zijn beschikbaar op [Trel
 
 Om dit project te kunnen bewerken/bekijken, is volgende software vereist
 
-* [NodeJS](https://nodejs.org/en/download/current)
+* [NodeJS](https://nodejs.org/en/download/current) (>= 8.4.0)
 
-* [yarn](https://github.com/yarnpkg/yarn/releases/tag/v0.27.5)
+* [yarn](https://github.com/yarnpkg/yarn/releases) (>= 1.0.1)
 
-* [php 7](http://php.net/downloads.php)
+* [php](http://php.net/downloads.php) (>= 5.5.38)
 
-* [Ruby](https://www.ruby-lang.org/en/downloads)
+* [Ruby](https://www.ruby-lang.org/en/downloads) (>= 2.4.1)
 
 ## Project initialiseren
 
