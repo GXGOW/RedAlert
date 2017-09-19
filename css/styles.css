@@ -262,9 +262,7 @@ body {
   margin-top: 10px; }
   #slides .slidesjs-play,
   #slides .slidesjs-stop {
-    color: white !important;
-    margin-left: 10px;
-    font-size: 2em; }
+    display: none; }
 
 .fa-arrow-right,
 .fa-arrow-left {
@@ -368,7 +366,14 @@ strong {
     display: flex; }
     #mapWrap #map {
       width: 500px;
-      height: 500px; } }
+      height: 500px; }
+
+  #slides .slidesjs-play,
+  #slides .slidesjs-stop {
+    display: initial;
+    color: white !important;
+    margin-left: 10px;
+    font-size: 2em; } }
 @media screen and (min-width: 992px) {
   .slideout-menu {
     display: block; }

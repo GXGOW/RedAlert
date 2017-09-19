@@ -314,9 +314,7 @@ body {
     margin-top: 10px;
     .slidesjs-play,
     .slidesjs-stop {
-        color: white !important;
-        margin-left: 10px;
-        font-size: 2em;
+        display: none;
     }
 }
 
@@ -452,6 +450,15 @@ strong {
         #map {
             width: 500px;
             height: 500px;
+        }
+    }
+    #slides {
+        .slidesjs-play,
+        .slidesjs-stop {
+            display: initial;
+            color: white !important;
+            margin-left: 10px;
+            font-size: 2em;
         }
     }
 }
