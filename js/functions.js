@@ -146,9 +146,11 @@ var mainView = {
         $('#main').css('bottom', '-100vh');
     },
     switchAnim: function() {
+        $('body').css('overflow', 'hidden');
         $('#main').animate({ 'bottom': '0' }, 1000);
         $('#temp').animate({ 'top': '-100vh', 'height': '0', 'padding': '0' }, 1000, function() {
             $('#temp').remove();
+            $('body').css('overflow', 'initial');
         });
 
     },
