@@ -9,7 +9,6 @@
     "dependencies": {
         "browserify": "^14.4.0",
         "browserify-css": "^0.11.1",
-        "clean-css": "^4.1.4",
         "countdown": "^2.6.0",
         "css-ripple-effect": "^1.0.5",
         "font-awesome": "^4.7.0",
