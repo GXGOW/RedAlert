@@ -179,7 +179,9 @@ p,
 a,
 h1,
 sup,
-h2 {
+h2,
+th,
+td {
   font-family: FontAwesome, FontAwesome, "Open Sans", sans-serif; }
 
 h2 {
@@ -324,7 +326,8 @@ strong {
     #headliners img:hover,
     #djs img:hover {
       filter: initial;
-      transition: 0.3s ease-in-out; }
+      transition: 0.3s ease-in-out;
+      cursor: pointer; }
 
 #headliners img {
   margin-left: 10%;
@@ -360,6 +363,28 @@ strong {
       #djinfo p:last-of-type a:hover {
         color: orange;
         transition: 0.3s ease-in-out; }
+
+#timetable {
+  text-align: center; }
+  #timetable p {
+    padding: 0; }
+  #timetable img {
+    width: 30%; }
+  #timetable table {
+    width: 100%;
+    background: rgba(199, 56, 56, 0.3);
+    padding-left: 1em;
+    padding-right: 1em; }
+    #timetable table td {
+      color: white;
+      font-size: 1.1em;
+      line-height: 2em; }
+    #timetable table tr {
+      width: 50%; }
+      #timetable table tr:nth-of-type(odd) {
+        background: rgba(255, 255, 255, 0.219); }
+      #timetable table tr:nth-of-type(even) {
+        background: rgba(255, 255, 255, 0.556); }
 
 @media screen and (min-width: 480px) {
   header {
@@ -400,7 +425,18 @@ strong {
     display: initial;
     color: white !important;
     margin-left: 10px;
-    font-size: 2em; } }
+    font-size: 2em; }
+
+  .arrow {
+    width: 80px;
+    height: 80px; }
+
+  #timetable table td {
+    font-size: 1.8em;
+    line-height: 2.8em; }
+
+  #home {
+    padding-top: 10%; } }
 @media screen and (min-width: 992px) {
   .slideout-menu {
     display: block; }
@@ -410,10 +446,6 @@ strong {
     margin-left: 25%;
     margin-right: 25%;
     width: 50%; }
-
-  .arrow {
-    width: 80px;
-    height: 80px; }
 
   #logo {
     width: 225px; }
@@ -489,4 +521,8 @@ strong {
     color: greenyellow; }
 
   #mapWrap #map {
-    width: 700px; } }
+    width: 700px; }
+
+  #djinfo p,
+  #djinfo h2 {
+    color: black; } }

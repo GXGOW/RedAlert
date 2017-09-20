@@ -218,7 +218,9 @@ p,
 a,
 h1,
 sup,
-h2 {
+h2,
+th,
+td {
     font-family: FontAwesome, $fonts;
 }
 
@@ -398,6 +400,7 @@ strong {
         &:hover {
             filter: initial;
             transition: $trans;
+            cursor: pointer;
         }
     }
 }
@@ -439,6 +442,36 @@ strong {
             &:hover {
                 color: orange;
                 transition: $trans;
+            }
+        }
+    }
+}
+
+#timetable {
+    text-align: center;
+    p {
+        padding: 0;
+    }
+    img {
+        width: 30%;
+    }
+    table {
+        width: 100%;
+        background: rgba(199, 56, 56, 0.3);
+        padding-left: 1em;
+        padding-right: 1em;
+        td {
+            color: white;
+            font-size: 1.1em;
+            line-height: 2em;
+        }
+        tr {
+            width: 50%;
+            &:nth-of-type(odd) {
+                background: rgba(255, 255, 255, 0.219);
+            }
+            &:nth-of-type(even) {
+                background: rgba(255, 255, 255, 0.556);
             }
         }
     }
@@ -494,6 +527,21 @@ strong {
             font-size: 2em;
         }
     }
+    .arrow {
+        width: 80px;
+        height: 80px;
+    }
+    #timetable {
+        table {
+            td {
+                font-size: 1.8em;
+                line-height: 2.8em;
+            }
+        }
+    }
+    #home {
+        padding-top: 10%;
+    }
 }
 
 @media screen and (min-width: 992px) {
@@ -505,10 +553,6 @@ strong {
         margin-left: 25%;
         margin-right: 25%;
         width: 50%;
-    }
-    .arrow {
-        width: 80px;
-        height: 80px;
     }
     #logo {
         width: 225px;
@@ -594,6 +638,12 @@ strong {
     #mapWrap {
         #map {
             width: 700px;
+        }
+    }
+    #djinfo {
+        p,
+        h2 {
+            color: black;
         }
     }
 }

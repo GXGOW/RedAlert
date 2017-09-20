@@ -8,15 +8,18 @@ try {
 
 var isIE = !!window.MSInputMethodContext && !!document.documentMode;
 var isMobile = screen.width <= 992;
+var alert = new Date('2018-03-03T21:00:00');
 var mainView = {
     slideout: null,
     interval: null,
     init: function() {
-        if (history.state != null) {
-            this.loadPage(history.state.page);
-        } else this.loadPage('index', true);
-        this.interval = this.initCountdown();
-        setInterval(this.initCountdown, 1000);
+        if (alert.getTime() > new Date().getTime()) {
+            this.initCountdown();
+            this.interval = setInterval(this.initCountdown, 1000);
+        } else {
+            $('#home').empty();
+            $('#home').load('html/timetable.html');
+        }
         $('.arrow').click(function() {
             mainView.initSite();
         });
@@ -28,7 +31,6 @@ var mainView = {
             mainView.initMenu();
             if (!isMobile) $('#menu').hide();
             mainView.loadPage('index', function() {
-                clearInterval(mainView.interval);
                 $('#wrap').show();
                 if (!isMobile) $('#menu').fadeIn(1000);
                 $('#home').animate({ "margin-top": "-100vh" }, 1000, function() {
@@ -37,6 +39,7 @@ var mainView = {
                     $('#wrap').css('bottom', 'initial');
                     mainView.initSlides();
                     $('body').css('overflow', 'initial');
+                    clearInterval(mainView.interval);
                 });
             });
             $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDxFQATxIl21PpSjcu_dzg-PT7GzQwsyEc");
@@ -172,8 +175,7 @@ var mainView = {
         });
     },
     initCountdown: function() {
-        var date = new Date('2018-03-03 21:00:00');
-        var ctn = countdown(new Date(), date, countdown.DAYS |
+        var ctn = countdown(new Date(), alert, countdown.DAYS |
             countdown.HOURS |
             countdown.MINUTES |
             countdown.SECONDS, 4);
