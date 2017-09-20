@@ -118,7 +118,7 @@ var mainView = {
                             active: false
                         },
                         play: {
-                            active: true,
+                            active: (isMobile ? false : true),
                             auto: true,
                             effect: "slide",
                             interval: 7000,

@@ -236,9 +236,6 @@ body {
 #slides {
   display: none;
   margin-top: 10px; }
-  #slides .slidesjs-play,
-  #slides .slidesjs-stop {
-    display: none; }
 
 .fa-arrow-right,
 .fa-arrow-left {
