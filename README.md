@@ -34,6 +34,10 @@ yarn install
 # Installeer gulp globaal (hierdoor is enkel 'gulp' voldoende om de gulp-scripts te runnen i.p.v. 'npm run gulp')
 yarn global add gulp
 
+# Installeer de ruby-gem sass (deze wordt gebruikt in het gulp-script)
+
+gem install sass
+
 # Gulp-script runnen om stylesheets en scripts te compileren naar build/functions.min.js
 gulp
 
