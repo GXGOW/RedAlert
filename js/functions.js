@@ -36,6 +36,7 @@ var mainView = {
                     $('.arrow').remove();
                     $('#wrap').css('bottom', 'initial');
                     mainView.initSlides();
+                    $('body').css('overflow', 'initial');
                 });
             });
             $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDxFQATxIl21PpSjcu_dzg-PT7GzQwsyEc");
@@ -78,7 +79,7 @@ var mainView = {
                     mapView.initMap('location')
                     break;
                 case "lineup":
-                    mainView.expandInfo();
+                    mainView.showDJ();
                     break;
                 default:
                     break;
@@ -157,10 +158,17 @@ var mainView = {
         $('title').text('Red Alert - ' + title);
         $('#title').text(title);
     },
-    expandInfo: function() {
-        $(".dj").click(function() {
-            $(".exp").not($(this).next()).delay(500).slideUp(500);
-            $(this).next().slideToggle(500);
+    showDJ: function() {
+        $('#djwrap').find('img').click(function() {
+            var file = $(this).attr('id') + '.html';
+            $('#djwrap').find('img').not(this).removeAttr('style');
+            $(this).css('filter', 'initial');
+            $('#djinfo').slideUp(400, function() {
+                $('#djinfo').load('html/lineup/' + file, function() {
+                    $('#djinfo').slideDown(400);
+                });
+            })
+
         });
     },
     initCountdown: function() {

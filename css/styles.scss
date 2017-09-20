@@ -242,14 +242,8 @@ h1 {
     font-size: 2.5em;
 }
 
-.djclicked {
-    color: red;
-}
-
-.dj,
 a,
-li,
-.djclicked:hover {
+li {
     transition: $trans;
     &:hover,
     &:active {
@@ -269,26 +263,6 @@ body {
     margin: 0;
     position: relative;
     overflow: hidden;
-}
-
-#djlist {
-    padding-top: 1em;
-    h1 {
-        text-align: center;
-        padding-bottom: .5em;
-        font-size: 4em;
-    }
-    .dj {
-        color: black;
-        &:hover {
-            cursor: pointer;
-            color: red;
-        }
-    }
-}
-
-.exp {
-    display: none;
 }
 
 #vvk {
@@ -327,7 +301,6 @@ body {
 /*Mobile lay-out*/
 
 .main {
-    //padding-bottom: 3.2em;
     a {
         color: red;
         &:hover,
@@ -409,6 +382,68 @@ footer {
 
 strong {
     color: orange;
+}
+
+
+/* Line-up */
+
+#headliners,
+#djs {
+    margin: 5%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    img {
+        filter: grayscale(100%);
+        transition: $trans;
+        &:hover {
+            filter: initial;
+            transition: $trans;
+        }
+    }
+}
+
+#headliners img {
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 30%;
+    height: 30%;
+}
+
+#djs img {
+    width: 20%;
+    height: 20%;
+}
+
+#djinfo {
+    background-color: #fff;
+    background-image: linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px), linear-gradient(#eee .1em, transparent .1em);
+    background-size: 100% 1.2em;
+    display: none;
+    padding-top: 1em;
+    padding-bottom: 3em;
+    h2 {
+        margin-bottom: .5em;
+        padding-bottom: .2em;
+        border-bottom: 2px solid black;
+    }
+    p:last-of-type {
+        font-size: 2.5em;
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        padding: 0;
+        a {
+            margin-right: .5em;
+            color: black;
+            transition: $trans;
+            &:hover {
+                color: orange;
+                transition: $trans;
+            }
+        }
+    }
 }
 
 @media screen and (min-width: 480px) {
@@ -542,11 +577,6 @@ strong {
         align-content: stretch;
         img {
             width: 40%;
-        }
-    }
-    #djlist {
-        .dj {
-            color: white;
         }
     }
     .fa-arrow-right,

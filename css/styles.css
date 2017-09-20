@@ -198,21 +198,12 @@ h1 {
   color: #fffeb4;
   font-size: 2.5em; }
 
-.djclicked {
-  color: red; }
-
-.dj,
 a,
-li,
-.djclicked:hover {
+li {
   transition: 0.3s ease-in-out; }
-  .dj:hover, .dj:active,
-  a:hover,
-  a:active,
+  a:hover, a:active,
   li:hover,
-  li:active,
-  .djclicked:hover:hover,
-  .djclicked:hover:active {
+  li:active {
     transition: 0.3s ease-in-out; }
 
 a {
@@ -226,21 +217,6 @@ body {
   margin: 0;
   position: relative;
   overflow: hidden; }
-
-#djlist {
-  padding-top: 1em; }
-  #djlist h1 {
-    text-align: center;
-    padding-bottom: .5em;
-    font-size: 4em; }
-  #djlist .dj {
-    color: black; }
-    #djlist .dj:hover {
-      cursor: pointer;
-      color: red; }
-
-.exp {
-  display: none; }
 
 #vvk {
   margin: 0;
@@ -333,6 +309,58 @@ footer {
 
 strong {
   color: orange; }
+
+/* Line-up */
+#headliners,
+#djs {
+  margin: 5%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center; }
+  #headliners img,
+  #djs img {
+    filter: grayscale(100%);
+    transition: 0.3s ease-in-out; }
+    #headliners img:hover,
+    #djs img:hover {
+      filter: initial;
+      transition: 0.3s ease-in-out; }
+
+#headliners img {
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 30%;
+  height: 30%; }
+
+#djs img {
+  width: 20%;
+  height: 20%; }
+
+#djinfo {
+  background-color: #fff;
+  background-image: linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px), linear-gradient(#eee 0.1em, transparent 0.1em);
+  background-size: 100% 1.2em;
+  display: none;
+  padding-top: 1em;
+  padding-bottom: 3em; }
+  #djinfo h2 {
+    margin-bottom: .5em;
+    padding-bottom: .2em;
+    border-bottom: 2px solid black; }
+  #djinfo p:last-of-type {
+    font-size: 2.5em;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    padding: 0; }
+    #djinfo p:last-of-type a {
+      margin-right: .5em;
+      color: black;
+      transition: 0.3s ease-in-out; }
+      #djinfo p:last-of-type a:hover {
+        color: orange;
+        transition: 0.3s ease-in-out; }
 
 @media screen and (min-width: 480px) {
   header {
@@ -447,9 +475,6 @@ strong {
     align-content: stretch; }
     #imgwrap img {
       width: 40%; }
-
-  #djlist .dj {
-    color: white; }
 
   .fa-arrow-right,
   .fa-arrow-left {
