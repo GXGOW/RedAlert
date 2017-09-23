@@ -39,7 +39,8 @@ function getScripts()
     $scripts = $dev ? '
         <script src="node_modules/jquery/dist/jquery.js"></script>
         <script src="node_modules/slideout/dist/slideout.js"></script>
-        <script src="node_modules/countdown/countdown.js"></script>        
+        <script src="node_modules/countdown/countdown.js"></script>
+        <script src="node_modules/konami-code/KonamiCode.js"></script>            
         <script src="js/jquery.slides.js"></script>
         <script src="js/functions.js"></script>
     ' :'<script src="build/functions.min.js"></script>

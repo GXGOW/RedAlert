@@ -4,6 +4,7 @@ try {
     window.Slideout = require('slideout');
     window.slidesjs = require('../js/jquery.slides');
     window.countdown = require('countdown');
+    window.KonamiCode = require('konami-code');
 } catch (e) {}
 
 var isIE = !!window.MSInputMethodContext && !!document.documentMode;
@@ -20,6 +21,7 @@ var mainView = {
             $('#home').empty();
             $('#home').load('html/timetable.html');
         }
+        this.easter();
         $('.arrow').click(function() {
             mainView.initSite();
         });
@@ -138,6 +140,13 @@ var mainView = {
                     });
                 });
             }
+        });
+    },
+    easter: function() {
+        var konami = new KonamiCode();
+        var audio = new Audio('audio/donut.mp3');
+        konami.listen(function() {
+            audio.play();
         });
     },
     initAnim: function() {
