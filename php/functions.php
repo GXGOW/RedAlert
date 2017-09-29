@@ -75,7 +75,7 @@ function getHeader()
 
 function getFooter()
 {
-    echo '<footer><p>Red Alert, een initiatief van <a href="http://kljhamme.be/" target="_blank">KLJ Hamme-Center</a></p><p>&#xf1f9; 2016-2017 Nicolas Loots</p>';
+    echo '<footer><p>Red Alert, een initiatief van <a href="http://kljhamme.be/" target="_blank">KLJ Hamme-Center</a></p><p>&#xf1f9; 2016-2017 <a href="http://nico.levls.be" target="_blank">Nicolas Loots</p></a>';
 }
 
 ?>
