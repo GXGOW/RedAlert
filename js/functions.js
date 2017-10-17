@@ -149,6 +149,7 @@ var mainView = {
             audio.play();
         });
     },
+    //TODO: animaties met animate.css (efficiënter)
     initAnim: function() {
         $('#main').attr('id', 'temp');
         $('#temp').after('<div id="main" class="main"></div>');
