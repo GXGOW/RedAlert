@@ -64,15 +64,19 @@ var mainView = {
         $('#menu').find('ul a').each(function() {
             $(this).click(function(e) {
                 e.preventDefault();
-                mainView.changeSelected($(this));
-                mainView.initAnim();
-                mainView.loadPage($(this).attr('href').split('#')[1], true);
-                mainView.switchAnim();
-                mainView.changeTitle();
+                if (($(this).text() !== $('.active').text())) {
+                    mainView.changeSelected($(this));
+                    mainView.beginAnim(function() {
+                        mainView.loadPage($('.active').attr('href').split('#')[1], true, function() {
+                            mainView.endAnim();
+                        });
+                    });
+                    mainView.changeTitle();
+                }
             });
         });
     },
-    loadPage: function(page, push) {
+    loadPage: function(page, push, callback) {
         $('#main').load('html/' + page + '.php', function() {
             switch (page) {
                 case "index":
@@ -99,6 +103,9 @@ var mainView = {
                 history.pushState({
                     page: page
                 }, null, page);
+            }
+            if (typeof callback === 'function') {
+                callback();
             }
         });
     },
@@ -149,20 +156,18 @@ var mainView = {
             audio.play();
         });
     },
-    //TODO: animaties met animate.css (efficiënter)
-    initAnim: function() {
-        $('#main').attr('id', 'temp');
-        $('#temp').after('<div id="main" class="main"></div>');
-        $('#main').css('bottom', '-100vh');
-    },
-    switchAnim: function() {
+    beginAnim: function(callback) {
         $('body').css('overflow', 'hidden');
-        $('#main').animate({ 'bottom': '0' }, 1000);
-        $('#temp').animate({ 'top': '-100vh', 'height': '0', 'padding': '0' }, 1000, function() {
-            $('#temp').remove();
-            $('body').css('overflow', 'initial');
+        $('#main').addClass('animated fadeOutUp');
+        $('#main').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+            callback();
         });
-
+    },
+    endAnim: function() {
+        $('#main').removeClass('fadeOutUp').addClass('fadeInDown');
+        $('#main').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+            $('#main').removeClass('animated fadeOutUp');
+        });
     },
     changeSelected: function(elem) {
         $('.active').removeClass('active');

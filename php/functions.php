@@ -14,6 +14,7 @@ function getHead()
         '<link href="node_modules/reset-css/reset.css" rel="stylesheet"/>
         <link href="node_modules/font-awesome/css/font-awesome.css" rel="stylesheet"/>
         <link href="css/styles.css" rel="stylesheet"/>
+        <link href="node_modules/animate.css/animate.css" rel="stylesheet"/>                
         <link href="node_modules/css-ripple-effect/dist/ripple.css" rel="stylesheet"/>        
         '
         :
