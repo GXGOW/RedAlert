@@ -14,6 +14,7 @@ function getHead()
         '<link href="node_modules/reset-css/reset.css" rel="stylesheet"/>
         <link href="node_modules/font-awesome/css/font-awesome.css" rel="stylesheet"/>
         <link href="css/styles.css" rel="stylesheet"/>
+        <link href="node_modules/animate.css/animate.css" rel="stylesheet"/>                
         <link href="node_modules/css-ripple-effect/dist/ripple.css" rel="stylesheet"/>        
         '
         :
@@ -30,7 +31,7 @@ function getHead()
     echo '<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="theme-color" content="#5c0000">
-    <link rel="icon" href="images/icon.png">'.$links;;
+    <link rel="icon" href="images/icon.png">'.$links;
 }
 
 function getScripts()

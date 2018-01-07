@@ -1,13 +1,13 @@
 <div id="border">
     <div id="djwrap">
         <div id='headliners'>
-            <img id="hl1" src="images/lineup/Lester Williams.png" />
-            <img id="hl2" src="images/lineup/WAP.jpg" />
+            <img id="hl1" src="images/lineup/template.png" />
+            <img id="hl2" src="images/lineup/template.png" />
         </div>
         <div id='djs'>
-            <img id="dj1" src="images/lineup/Kiss & Ride.jpg" />
-            <img id="dj2" src="images/lineup/No Trixx.jpg" />
-            <img id="dj3" src="images/lineup/FVB.jpg" />
+            <img id="dj1" src="images/lineup/mrmore.jpg" />
+            <img id="dj2" src="images/lineup/template.png" />
+            <img id="dj3" src="images/lineup/template.png" />
         </div>
         <div id="djinfo">
             <h2>Kiss & Ride</h2>

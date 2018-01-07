@@ -13,7 +13,7 @@
             display: none;
         }</style>
 </noscript>
-<div id=home>
+<div class="animated rubberBand" id=home>
         <img src="images/logo.png"/>
         <div id="countdown">
             <div><span class="count" id="days"></span>
