@@ -13,7 +13,7 @@ var alert = new Date('2018-03-03T21:00:00');
 var mainView = {
     slideout: null,
     interval: null,
-    init: function() {
+    init: function () {
         if (alert.getTime() > new Date().getTime()) {
             this.initCountdown();
             this.interval = setInterval(this.initCountdown, 1000);
@@ -22,20 +22,22 @@ var mainView = {
             $('#home').load('html/timetable.html');
         }
         this.easter();
-        $('.arrow').click(function() {
+        $('.arrow').click(function () {
             mainView.initSite();
         });
     },
-    initSite: function() {
+    initSite: function () {
         $('.arrow').fadeOut(500);
         $('body').append('<div id="wrap"></div>');
-        $('#wrap').load('html/init.php', function() {
+        $('#wrap').load('html/init.php', function () {
             mainView.initMenu();
             if (!isMobile) $('#menu').hide();
-            mainView.loadPage('index', function() {
+            mainView.loadPage('index', function () {
                 $('#wrap').show();
                 if (!isMobile) $('#menu').fadeIn(1000);
-                $('#home').animate({ "margin-top": "-100vh" }, 1000, function() {
+                $('#home').animate({
+                    "margin-top": "-100vh"
+                }, 1000, function () {
                     $('#home').remove();
                     $('.arrow').remove();
                     $('#wrap').css('bottom', 'initial');
@@ -49,7 +51,7 @@ var mainView = {
         });
     },
 
-    initMenu: function() {
+    initMenu: function () {
         this.slideout = new Slideout({
             'panel': document.getElementById('panel'),
             'menu': document.getElementById('menu'),
@@ -57,17 +59,17 @@ var mainView = {
             'tolerance': 70
         });
         // Toggle button
-        document.querySelector('.toggle-button').addEventListener('click', function() {
+        document.querySelector('.toggle-button').addEventListener('click', function () {
             mainView.slideout.toggle();
         });
 
-        $('#menu').find('ul a').each(function() {
-            $(this).click(function(e) {
+        $('#menu').find('ul a').each(function () {
+            $(this).click(function (e) {
                 e.preventDefault();
                 if (($(this).text() !== $('.active').text())) {
                     mainView.changeSelected($(this));
-                    mainView.beginAnim(function() {
-                        mainView.loadPage($('.active').attr('href').split('#')[1], true, function() {
+                    mainView.beginAnim(function () {
+                        mainView.loadPage($('.active').attr('href').split('#')[1], true, function () {
                             mainView.endAnim();
                         });
                     });
@@ -76,8 +78,8 @@ var mainView = {
             });
         });
     },
-    loadPage: function(page, push, callback) {
-        $('#main').load('html/' + page + '.php', function() {
+    loadPage: function (page, push, callback) {
+        $('#main').load('html/' + page + '.php', function () {
             switch (page) {
                 case "index":
                     break;
@@ -109,16 +111,19 @@ var mainView = {
             }
         });
     },
-    initSlides: function() {
+    initSlides: function () {
         $.ajax({
             url: "php/initSlideshow.php",
             type: 'get',
-            success: function(data) {
+            success: function (data) {
                 $('#menu').find('ul').after('<div id="slides"></div>');
                 //Workaround voor mobiele versie. Slides laden anders niet om een of andere reden
-                if (isMobile) $('.slideout-menu').css({ 'visibility': 'hidden', 'display': 'block' });
+                if (isMobile) $('.slideout-menu').css({
+                    'visibility': 'hidden',
+                    'display': 'block'
+                });
                 $('#slides').append(data);
-                $(function() {
+                $(function () {
                     $("#slides").slidesjs({
                         width: 250,
                         height: 200,
@@ -137,11 +142,14 @@ var mainView = {
                             pauseOnHover: false
                         },
                         callback: {
-                            loaded: function(number) {
+                            loaded: function (number) {
                                 $('.slidesjs-play').empty().append('<i class="fa fa-play-circle" aria-hidden="true"></i>');
                                 $('.slidesjs-stop').empty().append('<i class="fa fa-pause-circle" aria-hidden="true"></i>');
                                 //Deel 2 workaround
-                                if (isMobile) $('.slideout-menu').css({ 'visibility': 'visible', 'display': 'initial' });
+                                if (isMobile) $('.slideout-menu').css({
+                                    'visibility': 'visible',
+                                    'display': 'initial'
+                                });
                             }
                         }
                     });
@@ -149,49 +157,54 @@ var mainView = {
             }
         });
     },
-    easter: function() {
+    easter: function () {
         var konami = new KonamiCode();
         var audio = new Audio('audio/donut.mp3');
-        konami.listen(function() {
+        konami.listen(function () {
             audio.play();
         });
     },
-    beginAnim: function(callback) {
+    beginAnim: function (callback) {
         $('body').css('overflow', 'hidden');
         $('#main').addClass('animated fadeOutUp');
-        $('#main').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+        $('#main').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
             callback();
         });
     },
-    endAnim: function() {
+    endAnim: function () {
         $('#main').removeClass('fadeOutUp').addClass('fadeInDown');
-        $('#main').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+        $('#main').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
             $('#main').removeClass('animated fadeOutUp');
         });
     },
-    changeSelected: function(elem) {
+    changeSelected: function (elem) {
         $('.active').removeClass('active');
         $(elem).addClass('active');
     },
-    changeTitle: function() {
+    changeTitle: function () {
         var title = $('.active').text().split(' ')[1];
         $('title').text('Red Alert - ' + title);
         $('#title').text(title);
     },
-    showDJ: function() {
-        $('#djwrap').find('img').click(function() {
+    showDJ: function () {
+        $('#djwrap').find('img').click(function () {
             var file = $(this).attr('id') + '.html';
             $('#djwrap').find('img').not(this).removeAttr('style');
             $(this).css('filter', 'initial');
-            $('#djinfo').slideUp(400, function() {
-                $('#djinfo').load('html/lineup/' + file, function() {
-                    $('#djinfo').slideDown(400);
+            $('#djinfo').slideUp(400, function () {
+                $('#djinfo').load('html/lineup/' + file, function (response, status, xhr) {
+                    console.log(status);
+                    if (status == "error") {
+                        $('#djinfo').load('html/lineup/filler.html', function () {
+                            $('#djinfo').slideDown(400);
+                        });
+                    } else $('#djinfo').slideDown(400);
                 });
             })
 
         });
     },
-    initCountdown: function() {
+    initCountdown: function () {
         var ctn = countdown(new Date(), alert, countdown.DAYS |
             countdown.HOURS |
             countdown.MINUTES |
@@ -201,7 +214,7 @@ var mainView = {
         $("#min").text(ctn.minutes);
         $("#sec").text(ctn.seconds);
     },
-    initCookieBanner: function() {
+    initCookieBanner: function () {
         if (window.cookieconsent) {
             window.cookieconsent.initialise({
                 "palette": {
@@ -228,7 +241,7 @@ var mapView = {
     mapDiv: null,
     title: null,
     latlng: null,
-    initMap: function(page) {
+    initMap: function (page) {
         this.mapDiv = $('#main').find('#map')[0];
         this.setMapDimensions();
         switch (page) {
@@ -245,8 +258,8 @@ var mapView = {
                     lng: 4.1364247
                 };
                 this.title = 'Jeugddienst Hamme'
-                $("#vvk li").each(function() {
-                    $(this).on("click", function() {
+                $("#vvk li").each(function () {
+                    $(this).on("click", function () {
                         mapView.changeMap($(this).text().split(" ")[0]);
                     })
                 });
@@ -263,7 +276,7 @@ var mapView = {
             title: title
         });
     },
-    changeMap: function(address) {
+    changeMap: function (address) {
         switch (address) {
             case "Jeugddienst":
                 this.latlng = {
@@ -283,21 +296,21 @@ var mapView = {
         this.map.panTo(this.latlng);
         this.marker.setPosition(this.latlng);
     },
-    setMapDimensions: function() {
+    setMapDimensions: function () {
         if (window.innerWidth < 992) {
             $("#map").width(window.innerWidth - 40);
         }
     }
 }
 
-window.onload = function() {
+window.onload = function () {
     if (isIE) {
         window.location = 'html/lap.html';
     }
     mainView.init();
 };
 
-window.onpopstate = function(event) {
+window.onpopstate = function (event) {
     var page = 'index';
     if (event.state) {
         page = event.state.page;
