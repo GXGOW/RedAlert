@@ -217,8 +217,7 @@ body {
   background-attachment: fixed;
   min-height: 100%;
   margin: 0;
-  position: relative;
-  overflow: hidden; }
+  position: relative; }
 
 #vvk {
   margin: 0;

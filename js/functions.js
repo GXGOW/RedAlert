@@ -27,6 +27,7 @@ var mainView = {
         });
     },
     initSite: function () {
+        $('body').css('overflow', 'hidden');
         $('.arrow').fadeOut(500);
         $('body').append('<div id="wrap"></div>');
         $('#wrap').load('html/init.php', function () {
@@ -175,6 +176,7 @@ var mainView = {
         $('#main').removeClass('fadeOutUp').addClass('fadeInDown');
         $('#main').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
             $('#main').removeClass('animated fadeOutUp');
+            $('body').css('overflow', 'initial');
         });
     },
     changeSelected: function (elem) {
