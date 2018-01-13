@@ -1459,9 +1459,9 @@ kind-of@^4.0.0:
   dependencies:
     is-buffer "^1.1.5"
 
-konami-code@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/konami-code/-/konami-code-0.2.1.tgz#360a2c78fba132207e5f9dc076a5eceabd3a1c59"
+konami@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/konami/-/konami-1.6.0.tgz#1fea890f9bb1e07da13e6086d6971dfb5095be11"
 
 labeled-stream-splicer@^2.0.0:
   version "2.0.0"

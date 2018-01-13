@@ -4,7 +4,7 @@ try {
     window.Slideout = require('slideout');
     window.slidesjs = require('../js/jquery.slides');
     window.countdown = require('countdown');
-    window.KonamiCode = require('konami-code');
+    window.Konami = require('konami');
 } catch (e) {}
 
 var isIE = !!window.MSInputMethodContext && !!document.documentMode;
@@ -86,6 +86,7 @@ var mainView = {
                     break;
                 case "tickets":
                     mapView.initMap('tickets')
+
                     break;
                 case "location":
                     mapView.initMap('location')
@@ -95,6 +96,7 @@ var mainView = {
                     break;
                 default:
                     break;
+
             }
             mainView.changeSelected($('#menu').find('a[href="#' + page + '"]'));
             if (isMobile) {
@@ -159,9 +161,13 @@ var mainView = {
         });
     },
     easter: function () {
-        var konami = new KonamiCode();
-        var audio = new Audio('audio/donut.mp3');
-        konami.listen(function () {
+        var audio = new Audio('audio/sound.ogg');
+        var konami = new Konami(function () {
+            $('body').css({
+                'background-image': 'url(../images/temp.jpg)',
+                'background-repeat': 'repeat',
+                'background-size': 'initial'
+            });
             audio.play();
         });
     },
