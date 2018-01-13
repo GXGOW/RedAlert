@@ -164,7 +164,7 @@ var mainView = {
         var audio = new Audio('audio/sound.ogg');
         var konami = new Konami(function () {
             $('body').css({
-                'background-image': 'url(../images/temp.jpg)',
+                'background-image': 'url(images/temp.jpg)',
                 'background-repeat': 'repeat',
                 'background-size': 'initial'
             });
