@@ -12,10 +12,10 @@ function getHead()
     global $dev;
     $links = ($dev ?
         '<link href="node_modules/reset-css/reset.css" rel="stylesheet"/>
-        <link href="node_modules/font-awesome/css/font-awesome.css" rel="stylesheet"/>
         <link href="css/styles.css" rel="stylesheet"/>
         <link href="node_modules/animate.css/animate.css" rel="stylesheet"/>                
-        <link href="node_modules/css-ripple-effect/dist/ripple.css" rel="stylesheet"/>        
+        <link href="node_modules/css-ripple-effect/dist/ripple.css" rel="stylesheet"/>    
+        <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>    
         '
         :
         '<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
@@ -27,7 +27,8 @@ function getHead()
     
         ga(\'create\', \'UA-91503104-1\', \'auto\');
         ga(\'send\', \'pageview\');
-        </script>');
+        </script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>');
     echo '<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="theme-color" content="#5c0000">
@@ -41,7 +42,7 @@ function getScripts()
         <script src="node_modules/jquery/dist/jquery.js"></script>
         <script src="node_modules/slideout/dist/slideout.js"></script>
         <script src="node_modules/countdown/countdown.js"></script>
-        <script src="node_modules/konami/konami.js"></script>            
+        <script src="node_modules/konami/konami.js"></script>
         <script src="js/jquery.slides.js"></script>
         <script src="js/functions.js"></script>
     ' :'<script src="build/functions.min.js"></script>
@@ -53,7 +54,7 @@ function getMenu()
 {
     echo '<nav id="menu">
     <img id="logo" src="images/logo.png" alt="Red Alert logo">
-    <ul><li><a href="#index" class="ripple active">&#xf015; Home</a>
+    <ul><li><a href="#index" class="ripple active"><i class="fab fa-facebook"></i> Home</a>
     <li><a class="ripple" href="#lineup">&#xf017; Line-up</a></li>
     <li><a class="ripple" href="#location">&#xf124; Locatie</a></li>
     <li><a class="ripple" href="#tickets">&#xf145; Tickets</a></li></ul>
