@@ -259,66 +259,48 @@ var mainView = {
     }
 };
 
+var locations = {
+    'hambiance': {title: 'Hambiance Hamme', latlng: {lat: 51.1023047, lng:4.1352369}},
+    'molen': {title: 'Bloemen De Molen',latlng: {lat: 51.0923248, lng:4.1359097}},
+    'tuit':{title: 'Frituur De Tuit',latlng: {lat: 51.0945915, lng:4.1408053}},
+    'covfefe':{title: 'La Pause Douceur',latlng: {lat: 51.0554815, lng:4.1035206}},
+    'apu':{title: 'Nachtwinkel Apu',latlng: {lat: 51.0928561, lng:4.1342326}}
+};
 var mapView = {
     map: null,
     marker: null,
     mapDiv: null,
-    title: null,
-    latlng: null,
+    loc: null,
     initMap: function (page) {
         this.mapDiv = $('#main').find('#map')[0];
         this.setMapDimensions();
         switch (page) {
             case 'location':
-                this.latlng = {
-                    lat: 51.1023047,
-                    lng: 4.1352369
-                };
-                title = 'Hambiance Hamme';
+                this.loc = locations['hambiance'];
                 break;
             case 'tickets':
-                this.latlng = {
-                    lat: 51.0928994,
-                    lng: 4.1364247
-                };
-                this.title = 'Jeugddienst Hamme'
+                this.loc = locations['molen'];
                 $("#vvk li").each(function () {
                     $(this).on("click", function () {
-                        mapView.changeMap($(this).text().split(" ")[0]);
+                        mapView.changeLocation($(this).attr('id'));
                     })
                 });
         }
         this.map = new google.maps.Map(this.mapDiv, {
-            center: this.latlng,
+            center: this.loc.latlng,
             zoom: 16
         });
 
         this.marker = new google.maps.Marker({
-            position: this.latlng,
+            position: this.loc.latlng,
             map: this.map,
-            icon: 'images/letter.png',
-            title: title
+            title: this.loc.title
         });
     },
-    changeMap: function (address) {
-        switch (address) {
-            case "Jeugddienst":
-                this.latlng = {
-                    lat: 51.1020762,
-                    lng: 4.134353
-                };
-                this.marker.setTitle(this.marker.name = "Jeugddienst Hamme");
-                break;
-            case "Nachtwinkel":
-                this.latlng = {
-                    lat: 51.0928994,
-                    lng: 4.1364247
-                };
-                this.marker.setTitle(this.marker.name = "Nachtwinkel Apu");
-                break;
-        }
-        this.map.panTo(this.latlng);
-        this.marker.setPosition(this.latlng);
+    changeLocation: function (location) {
+        this.loc = locations[location];
+        this.map.panTo(this.loc.latlng);
+        this.marker.setPosition(this.loc.latlng);
     },
     setMapDimensions: function () {
         if (window.innerWidth < 992) {
