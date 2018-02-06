@@ -52,18 +52,27 @@ function getScripts()
 
 function getMenu()
 {
-    echo '<nav id="menu">
+    $items = array(
+        ["name" => "Home","icon"=>"fas fa-home","href" => "index"],
+        ["name" => "Line-up","icon"=>"far fa-clock","href" => "lineup"],
+        ["name" => "Locatie","icon"=>"fas fa-location-arrow","href" => "location"],
+        ["name" => "Tickets","icon"=>"fas fa-ticket-alt","href" => "tickets"]
+    );
+    $icons = ["fas fa-home", "far fa-clock","fas fa-location-arrow"];
+    $menu = '<nav id="menu">
     <img id="logo" src="images/logo.png" alt="Red Alert logo">
-    <ul><li><a href="#index" class="ripple active"><i class="fab fa-facebook"></i> Home</a>
-    <li><a class="ripple" href="#lineup">&#xf017; Line-up</a></li>
-    <li><a class="ripple" href="#location">&#xf124; Locatie</a></li>
-    <li><a class="ripple" href="#tickets">&#xf145; Tickets</a></li></ul>
+    <ul>';
+    foreach($items as $item) {
+        $menu .= '<li><a href="#'.$item['href'].'" class="ripple active"><i class="'.$item['icon'].'"></i> '.$item['name'].'</a>';
+    }
+    $menu .= '</ul>
     <div id="social">
-    <a href="https://www.facebook.com/RedAlertHamme/?fref=ts"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/RedAlertHamme/?fref=ts"><i class="fab fa-facebook-square" aria-hidden="true"></i></a>
     <a href="http://www.kljhamme.be" target="_blank"><img src="images/klj.png"/></a>
-    <a href="https://github.com/GXGOW/RedAlert" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+    <a href="https://github.com/GXGOW/RedAlert" target="_blank"><i class="fab fa-github" aria-hidden="true"></i></a>
     </div>
     </nav>';
+    echo $menu;
 }
 
 function getHeader()
@@ -77,7 +86,7 @@ function getHeader()
 
 function getFooter()
 {
-    echo '<footer><p>Red Alert, een initiatief van <a href="http://kljhamme.be/" target="_blank">KLJ Hamme-Center</a></p><p>&#xf1f9; 2016-2018 <a href="http://nico.levls.be" target="_blank">Nicolas Loots</p></a>';
+    echo '<footer><p>Red Alert, een initiatief van <a href="http://kljhamme.be/" target="_blank">KLJ Hamme-Center</a></p><p><i class="fas fa-copyright"></i> 2016-2018 <a href="http://nico.levls.be" target="_blank">Nicolas Loots</p></a>';
 }
 
 ?>
