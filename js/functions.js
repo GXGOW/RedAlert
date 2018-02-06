@@ -201,7 +201,7 @@ var mainView = {
             $(this).css('filter', 'initial');
             $('#djinfo').slideUp(400, function () {
                 $('#djinfo').empty();
-                $.getJSON("html/lineup/"+file, function(data) {
+                $.getJSON("data/lineup/"+file, function(data) {
                     $('#djinfo').append("<h2>" + data.title + "</h2>");
                     $('#djinfo').append("<p>"+data.description+"</p>");
                     if(data.social !== undefined) {
