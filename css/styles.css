@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
 @import url("../node_modules/reset-css/reset.css");
 @import url("../node_modules/animate.css/animate.css");
-@import url("../build/font-awesome/css/font-awesome.css");
 @import url("../node_modules/css-ripple-effect/dist/ripple.min.css");
 @font-face {
   font-family: 'Digital-7';
@@ -358,17 +357,17 @@ strong {
     margin-bottom: .5em;
     padding-bottom: .2em;
     border-bottom: 2px solid black; }
-  #djinfo p:last-of-type {
+  #djinfo #socmed {
     font-size: 2.5em;
     display: flex;
     flex-flow: row;
     justify-content: center;
     padding: 0; }
-    #djinfo p:last-of-type a {
+    #djinfo #socmed a {
       margin-right: .5em;
       color: black;
       transition: 0.3s ease-in-out; }
-      #djinfo p:last-of-type a:hover {
+      #djinfo #socmed a:hover {
         color: orange;
         transition: 0.3s ease-in-out; }
 
