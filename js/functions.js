@@ -196,15 +196,21 @@ var mainView = {
     },
     showDJ: function () {
         $('#djwrap').find('img').click(function () {
-            var file = $(this).attr('id') === undefined ? 'filler.html' : $(this).attr('id') + '.html';
+            var file = $(this).attr('id') === undefined ? 'filler.json' : $(this).attr('id') + '.json';
             $('#djwrap').find('img').not(this).removeAttr('style');
             $(this).css('filter', 'initial');
             $('#djinfo').slideUp(400, function () {
-                $('#djinfo').load('html/lineup/' + file, function (response, status, xhr) {
+                $('#djinfo').empty();
+                /*$('#djinfo').load('html/lineup/' + file, function (response, status, xhr) {
                     if (status != "error") {
                         $('#djinfo').slideDown(400);
                     }
-                });
+                });*/
+                $.getJSON("html/lineup/"+file, function(data) {
+                    $('#djinfo').append("<h2>" + data.title + "</h2>");
+                    $('#djinfo').append("<p>"+data.description+"</p>");
+                    $('#djinfo').slideDown(400);
+                })
             })
 
         });
