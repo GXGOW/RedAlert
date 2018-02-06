@@ -214,6 +214,7 @@ var mainView = {
                                 case "facebook": icon = '<i class="fab fa-facebook-square"></i>';break;
                                 case "twitter": icon = '<i class="fab fa-twitter"></i>';break;
                                 case "soundcloud": icon = '<i class="fab fa-soundcloud"></i>';break;
+                                case "spotify": icon = '<i class="fab fa-spotify"></i>';break;
                                 default: break;
                             }
                             sites += icon+"</a>"
