@@ -201,14 +201,26 @@ var mainView = {
             $(this).css('filter', 'initial');
             $('#djinfo').slideUp(400, function () {
                 $('#djinfo').empty();
-                /*$('#djinfo').load('html/lineup/' + file, function (response, status, xhr) {
-                    if (status != "error") {
-                        $('#djinfo').slideDown(400);
-                    }
-                });*/
                 $.getJSON("html/lineup/"+file, function(data) {
                     $('#djinfo').append("<h2>" + data.title + "</h2>");
                     $('#djinfo').append("<p>"+data.description+"</p>");
+                    if(data.social !== undefined) {
+                        var sites = "<div id='socmed'><p>";
+                        Object.keys(data.social).forEach(function(key, index){
+                            sites += '<a href="'+data.social[key]+'" target="_blank">';
+                            var icon = '';
+                            switch(key) {
+                                case "site": icon = '<i class="far fa-file"></i>';break;
+                                case "facebook": icon = '<i class="fab fa-facebook-square"></i>';break;
+                                case "twitter": icon = '<i class="fab fa-twitter"></i>';break;
+                                case "soundcloud": icon = '<i class="fab fa-soundcloud"></i>';break;
+                                default: break;
+                            }
+                            sites += icon+"</a>"
+                        });
+                        sites += "</p></div">
+                        $("#djinfo").append(sites);
+                    }
                     $('#djinfo').slideDown(400);
                 })
             })
