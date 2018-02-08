@@ -146,8 +146,8 @@ var mainView = {
                         },
                         callback: {
                             loaded: function (number) {
-                                $('.slidesjs-play').empty().append('<i class="fa fa-play-circle" aria-hidden="true"></i>');
-                                $('.slidesjs-stop').empty().append('<i class="fa fa-pause-circle" aria-hidden="true"></i>');
+                                $('.slidesjs-play').empty().append('<i class="fas fa-play-circle"></i>');
+                                $('.slidesjs-stop').empty().append('<i class="fas fa-pause-circle"></i>');
                                 //Deel 2 workaround
                                 if (isMobile) $('.slideout-menu').css({
                                     'visibility': 'visible',
