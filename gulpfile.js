@@ -8,6 +8,7 @@ const assign = require('lodash.assign');
 const watchify = require('watchify');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
+const connect = require('gulp-connect-php');
 
 const DEST = 'build/';
 
@@ -54,3 +55,7 @@ gulp.task('sass', () =>
 gulp.task('watch-sass', () =>
     gulp.watch('css/**/*.scss', ['sass'])
 );
+
+gulp.task('server', function() {
+    connect.server({port: 8080});
+});
