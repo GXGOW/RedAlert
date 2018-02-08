@@ -1,5 +1,5 @@
 {
-    "name": "RedAlert",
+    "name": "red-alert",
     "version": "1.0.0",
     "description": "Website voor de alombekende fuif van KLJ Hamme-Center, Red Alert. Ondertussen al enkele jaren oud",
     "main": "index.js",
@@ -8,20 +8,23 @@
     "license": "MIT",
     "dependencies": {
         "animate.css": "^3.5.2",
-        "browserify": "^14.4.0",
-        "browserify-css": "^0.11.1",
         "countdown": "^2.6.0",
         "css-ripple-effect": "^1.0.5",
+        "jquery": "^3.2.1",
+        "konami": "^1.6.0",
+        "reset-css": "^2.2.0",
+        "slideout": "^1.0.1"
+    },
+    "devDependencies": {
+        "browserify": "^14.4.0",
+        "browserify-css": "^0.11.1",
         "gulp": "^3.9.1",
+        "gulp-connect-php": "^1.0.1",
         "gulp-filter": "^5.0.0",
         "gulp-ruby-sass": "^2.1.1",
         "gulp-uglify": "^3.0.0",
         "gulp-util": "^3.0.8",
-        "jquery": "^3.2.1",
-        "konami": "^1.6.0",
         "lodash.assign": "^4.2.0",
-        "reset-css": "^2.2.0",
-        "slideout": "^1.0.1",
         "vinyl-buffer": "^1.0.0",
         "vinyl-source-stream": "^1.1.0",
         "watchify": "^3.9.0"
