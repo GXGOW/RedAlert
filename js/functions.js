@@ -4,7 +4,7 @@ try {
     window.Slideout = require('slideout');
     window.slidesjs = require('../js/jquery.slides');
     window.countdown = require('countdown');
-    window.KonamiCode = require('konami-code');
+    window.Konami = require('konami');
 } catch (e) {}
 
 var isIE = !!window.MSInputMethodContext && !!document.documentMode;
@@ -86,6 +86,7 @@ var mainView = {
                     break;
                 case "tickets":
                     mapView.initMap('tickets')
+
                     break;
                 case "location":
                     mapView.initMap('location')
@@ -95,6 +96,7 @@ var mainView = {
                     break;
                 default:
                     break;
+
             }
             mainView.changeSelected($('#menu').find('a[href="#' + page + '"]'));
             if (isMobile) {
@@ -144,8 +146,8 @@ var mainView = {
                         },
                         callback: {
                             loaded: function (number) {
-                                $('.slidesjs-play').empty().append('<i class="fa fa-play-circle" aria-hidden="true"></i>');
-                                $('.slidesjs-stop').empty().append('<i class="fa fa-pause-circle" aria-hidden="true"></i>');
+                                $('.slidesjs-play').empty().append('<i class="fas fa-play-circle"></i>');
+                                $('.slidesjs-stop').empty().append('<i class="fas fa-pause-circle"></i>');
                                 //Deel 2 workaround
                                 if (isMobile) $('.slideout-menu').css({
                                     'visibility': 'visible',
@@ -159,9 +161,13 @@ var mainView = {
         });
     },
     easter: function () {
-        var konami = new KonamiCode();
-        var audio = new Audio('audio/donut.mp3');
-        konami.listen(function () {
+        var audio = new Audio('audio/sound.ogg');
+        var konami = new Konami(function () {
+            $('body').css({
+                'background-image': 'url(images/temp.jpg)',
+                'background-repeat': 'repeat',
+                'background-size': 'initial'
+            });
             audio.play();
         });
     },
@@ -190,15 +196,34 @@ var mainView = {
     },
     showDJ: function () {
         $('#djwrap').find('img').click(function () {
-            var file = $(this).attr('id') === undefined ? 'filler.html' : $(this).attr('id') + '.html';
+            var file = $(this).attr('id') === undefined ? 'filler.json' : $(this).attr('id') + '.json';
             $('#djwrap').find('img').not(this).removeAttr('style');
             $(this).css('filter', 'initial');
             $('#djinfo').slideUp(400, function () {
-                $('#djinfo').load('html/lineup/' + file, function (response, status, xhr) {
-                    if (status != "error") {
-                        $('#djinfo').slideDown(400);
+                $('#djinfo').empty();
+                $.getJSON("data/lineup/"+file, function(data) {
+                    $('#djinfo').append("<h2>" + data.title + "</h2>");
+                    $('#djinfo').append("<p>"+data.description+"</p>");
+                    if(data.social !== undefined) {
+                        var sites = "<div id='socmed'><p>";
+                        Object.keys(data.social).forEach(function(key, index){
+                            sites += '<a href="'+data.social[key]+'" target="_blank">';
+                            var icon = '';
+                            switch(key) {
+                                case "site": icon = '<i class="far fa-file"></i>';break;
+                                case "facebook": icon = '<i class="fab fa-facebook-square"></i>';break;
+                                case "twitter": icon = '<i class="fab fa-twitter"></i>';break;
+                                case "soundcloud": icon = '<i class="fab fa-soundcloud"></i>';break;
+                                case "spotify": icon = '<i class="fab fa-spotify"></i>';break;
+                                default: break;
+                            }
+                            sites += icon+"</a>"
+                        });
+                        sites += "</p></div">
+                        $("#djinfo").append(sites);
                     }
-                });
+                    $('#djinfo').slideDown(400);
+                })
             })
 
         });
@@ -234,66 +259,48 @@ var mainView = {
     }
 };
 
+var locations = {
+    'hambiance': {title: 'Hambiance Hamme', latlng: {lat: 51.1023047, lng:4.1352369}},
+    'molen': {title: 'Bloemen De Molen',latlng: {lat: 51.0923248, lng:4.1359097}},
+    'tuit':{title: 'Frituur De Tuit',latlng: {lat: 51.0945915, lng:4.1408053}},
+    'covfefe':{title: 'La Pause Douceur',latlng: {lat: 51.0554815, lng:4.1035206}},
+    'apu':{title: 'Nachtwinkel Apu',latlng: {lat: 51.0928561, lng:4.1342326}}
+};
 var mapView = {
     map: null,
     marker: null,
     mapDiv: null,
-    title: null,
-    latlng: null,
+    loc: null,
     initMap: function (page) {
         this.mapDiv = $('#main').find('#map')[0];
         this.setMapDimensions();
         switch (page) {
             case 'location':
-                this.latlng = {
-                    lat: 51.1023047,
-                    lng: 4.1352369
-                };
-                title = 'Hambiance Hamme';
+                this.loc = locations['hambiance'];
                 break;
             case 'tickets':
-                this.latlng = {
-                    lat: 51.0928994,
-                    lng: 4.1364247
-                };
-                this.title = 'Jeugddienst Hamme'
+                this.loc = locations['molen'];
                 $("#vvk li").each(function () {
                     $(this).on("click", function () {
-                        mapView.changeMap($(this).text().split(" ")[0]);
+                        mapView.changeLocation($(this).attr('id'));
                     })
                 });
         }
         this.map = new google.maps.Map(this.mapDiv, {
-            center: this.latlng,
+            center: this.loc.latlng,
             zoom: 16
         });
 
         this.marker = new google.maps.Marker({
-            position: this.latlng,
+            position: this.loc.latlng,
             map: this.map,
-            icon: 'images/letter.png',
-            title: title
+            title: this.loc.title
         });
     },
-    changeMap: function (address) {
-        switch (address) {
-            case "Jeugddienst":
-                this.latlng = {
-                    lat: 51.1020762,
-                    lng: 4.134353
-                };
-                this.marker.setTitle(this.marker.name = "Jeugddienst Hamme");
-                break;
-            case "Nachtwinkel":
-                this.latlng = {
-                    lat: 51.0928994,
-                    lng: 4.1364247
-                };
-                this.marker.setTitle(this.marker.name = "Nachtwinkel Apu");
-                break;
-        }
-        this.map.panTo(this.latlng);
-        this.marker.setPosition(this.latlng);
+    changeLocation: function (location) {
+        this.loc = locations[location];
+        this.map.panTo(this.loc.latlng);
+        this.marker.setPosition(this.loc.latlng);
     },
     setMapDimensions: function () {
         if (window.innerWidth < 992) {
