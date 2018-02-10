@@ -3,7 +3,7 @@ date_default_timezone_set("Europe/Brussels");
 
 //Development of production?
 $dev;
-if ($_SERVER['SERVER_NAME'] == 'localhost') {
+if ($_SERVER['SERVER_NAME'] == '127.0.0.1') {
     $dev = true;
 }
 
